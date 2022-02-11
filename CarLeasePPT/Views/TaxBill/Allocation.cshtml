@@ -1,0 +1,180 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.AllocationViewModel
+
+@{
+    ViewBag.Title = Resources.TaxBill_Allocation_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.TaxBill_BreadCrumb, "Index", "TaxBill")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.TaxBill_Detail_BreadCrumb, "Detail", "TaxBill", new {id = Model.TaxBillId}, null)</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.TaxBill_Allocation_BreadCrumb</li>
+    </ol>
+</nav>
+@if (User.IsInRole("WORKITEM_CRUD"))
+{
+    <div class="row mb-3">
+        <div class="col-lg">
+            @Html.ActionLink(Resources.Common_WorkItem_Create_Link, "CreateFromBillLease", "WorkItem", new {id = Model.TaxBillCarLeaseId}, new {@class = "btn btn-secondary"})
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card mb-3">
+                    <h5 class="card-header">@Resources.TaxBill_Allocation_Assessment_Heading</h5>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_Assessor_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.TaxAssessorName</dd>
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_TaxCollector_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.TaxCollectorName</dd>
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_CollectorAccountNumber_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.CollectorAccountNumber</dd>
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_Company_DisplayName</dt>
+                            <dd class="col-lg-8">Hyundai</dd>
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_BillNumber_DisplayName</dt>
+                            <dd class="col-lg-8">@Html.ActionLink(Model.BillNumber, "Detail", "TaxBill", new {id = Model.TaxBillId}, null)</dd>
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_TaxYear_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.TaxYear</dd>
+                            @if (Model.TaxPeriodStart.HasValue && Model.TaxPeriodEnd.HasValue)
+                            {
+                                <dt class="col-lg-4">@Resources.TaxBill_Common_TaxPeriod_DisplayName</dt>
+                                <dd class="col-lg-8">@($"{Model.TaxPeriodStart.Value:MM/dd/yyyy} to {Model.TaxPeriodEnd.Value:MM/dd/yyyy}")</dd>
+                            }
+                            <dt class="col-lg-4">@Resources.TaxBill_Common_AssessedValue_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.AssessedValue.ToString("C0")</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <div class="card mb-3">
+                    <h5 class="card-header">@Resources.WorkItem_Detail_CarLessee_Heading</h5>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-lg-4">@Resources.Common_Vin_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.Vin</dd>
+                            <dt class="col-lg-4">@Resources.Common_LeaseNumber_DisplayName</dt>
+                            <dd class="col-lg-8">@Html.ActionLink(Model.LeaseNumber, "Detail", "Lease", new {id = Model.CarLeaseId ?? -1}, null)</dd>
+                            <dt class="col-lg-4">@Resources.Lease_Detail_LesseeFullName_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.LesseeFirstLastName</dd>
+                            <dt class="col-lg-4">@Resources.Lease_Detail_YearMakeModel_DisplayName</dt>
+                            <dd class="col-lg-8">@Model.CarDescription</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg">
+                <div class="card mb-3">
+                    <h5 class="card-header">@Resources.TaxBill_Detail_MilestoneDates_Heading</h5>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            @if (Model.InvoiceDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_InvoiceDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.InvoiceDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.ReceivedDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_ReceivedDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.ReceivedDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.DiscountDueDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_DiscountDueDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.DiscountDueDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.DueDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_DueDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.DueDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.PaymentDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_PaidDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.PaymentDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.ApExportDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_ApExportDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.ApExportDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                            @if (Model.CompletedDate.HasValue)
+                            {
+                                <dt class="col-lg-8">@Resources.TaxBill_Common_CompletedDate_DisplayName</dt>
+                                <dd class="col-lg-4">@Model.CompletedDate.Value.ToString("MM/dd/yyyy")</dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <div class="card mb-3">
+                    <h5 class="card-header">@Resources.TaxBill_Allocation_Breakout_Heading</h5>
+                    <div class="table-responsive">
+                        <table class="table table-condensed compact dataTable_custom mb-0">
+                            <thead>
+                            <tr>
+                                <th>@Resources.TaxBill_Allocation_Component_TableHeader</th>
+                                <th class="text-right">@Resources.TaxBill_Allocation_Amount_TableHeader</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_BaseTax_DisplayName</td>
+                                <td class="text-right">@Model.BaseTax.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_Discount_DisplayName</td>
+                                <td class="text-right">@Model.Discount.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_PptraCredit_DisplayName</td>
+                                <td class="text-right">@Model.PptraCredit.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_DecalRegistrationFee_DisplayName</td>
+                                <td class="text-right">@Model.DecalRegistrationFee.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_Penalty_DisplayName</td>
+                                <td class="text-right">@Model.Penalty.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>@Resources.TaxBill_Common_Interest_DisplayName</td>
+                                <td class="text-right">@Model.Interest.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>@Resources.TaxBill_Common_TotalAmountOwed_DisplayName</strong>
+                                </td>
+                                <td class="text-right">
+                                    <strong>@Model.TotalAmountOwed.ToString("C")</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        @Html.ActionLink(Resources.TaxBill_AssetSummary_Link, "AssetSummary", "TaxBill", new {id = Model.TaxBillCarLeaseId}, new {target = "_blank", @class = "btn btn-primary"})
+        @Html.ActionLink(Resources.TaxBill_Allocation_ViewLeaseDetail_Link, "Detail", "Lease", new {id = Model.CarLeaseId ?? -1}, new {@class = "btn btn-primary"})
+        @Html.ActionLink(Resources.TaxBill_Allocation_ViewTaxBillDetail_Link, "Detail", "TaxBill", new {id = Model.TaxBillId}, new {@class = "btn btn-primary"})
+    </div>
+</div>

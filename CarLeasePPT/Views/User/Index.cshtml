@@ -1,0 +1,48 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.User_Index_Title;
+    int myId = ViewBag.MyId;
+
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.User_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="mb-3">
+    @Html.ActionLink(Resources.User_Index_Create_Link, "Create", "User", null, new {@class = "btn btn-secondary"})
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <div class="form-check">
+                <input id="show_expired" class="form-check-input" name="show_expired" type="checkbox" value="true" aria-controls="person_table" aria-label="@Resources.User_Index_ShowExpired_DisplayName"/>
+                <label for="show_expired" class="form-check-label">@Resources.User_Index_ShowExpired_DisplayName</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered" id="person_table">
+        <thead>
+        <tr>
+            <th>@Resources.User_Common_Status_DisplayName</th>
+            <th>@Resources.User_Common_FullName_DisplayName</th>
+            <th>@Resources.User_Common_PreferredName_DisplayName</th>
+            <th>@Resources.User_Common_EmailAddress_DisplayName</th>
+            <th>@Resources.Common_Actions_TableHeader</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id="k2so" data-person="@myId" aria-hidden="true" class="hidden"></div>
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/user")
+
+}

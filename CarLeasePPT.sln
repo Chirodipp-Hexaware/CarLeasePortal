@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT", "CarLeasePPT\CarLeasePPT.csproj", "{BC8E93B6-14FA-4521-B47D-41CCEB55C138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT.DataAccessLayer", "CarLeasePPT.DataAccessLayer\CarLeasePPT.DataAccessLayer.csproj", "{9C960EFC-D311-4C43-9575-40F862E09208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT.Utility", "CarLeasePPT.Utility\CarLeasePPT.Utility.csproj", "{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT.Encryption", "CarLeasePPT.Encryption\CarLeasePPT.Encryption.csproj", "{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT.EmailClient", "CarLeasePPT.EmailClient\CarLeasePPT.EmailClient.csproj", "{BDFF9BB9-165D-4239-B1C0-6882E67449F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLeasePPT.Spreadsheet", "CarLeasePPT.Spreadsheet\CarLeasePPT.Spreadsheet.csproj", "{4F844AF2-6EE6-4C28-B295-345243BD9F84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		QA|Any CPU = QA|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.QA|Any CPU.Build.0 = QA|Any CPU
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8E93B6-14FA-4521-B47D-41CCEB55C138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.QA|Any CPU.Build.0 = QA|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C960EFC-D311-4C43-9575-40F862E09208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.QA|Any CPU.Build.0 = QA|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932CC67D-60BA-4604-B2BF-04CFEE2C0D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.QA|Any CPU.Build.0 = QA|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEBE229-3487-4720-8F6C-D7F74DA32AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.QA|Any CPU.Build.0 = QA|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFF9BB9-165D-4239-B1C0-6882E67449F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.QA|Any CPU.Build.0 = QA|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F844AF2-6EE6-4C28-B295-345243BD9F84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {899A3777-455C-4357-A393-0EEBA35885D6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.hex.com:8080/tfs/hex
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CarLeasePPT.DataAccessLayer\\CarLeasePPT.DataAccessLayer.csproj
+		SccProjectName1 = CarLeasePPT.DataAccessLayer
+		SccLocalPath1 = CarLeasePPT.DataAccessLayer
+		SccProjectUniqueName2 = CarLeasePPT.EmailClient\\CarLeasePPT.EmailClient.csproj
+		SccProjectName2 = CarLeasePPT.EmailClient
+		SccLocalPath2 = CarLeasePPT.EmailClient
+		SccProjectUniqueName3 = CarLeasePPT.Encryption\\CarLeasePPT.Encryption.csproj
+		SccProjectName3 = CarLeasePPT.Encryption
+		SccLocalPath3 = CarLeasePPT.Encryption
+		SccProjectUniqueName4 = CarLeasePPT.Utility\\CarLeasePPT.Utility.csproj
+		SccProjectName4 = CarLeasePPT.Utility
+		SccLocalPath4 = CarLeasePPT.Utility
+		SccProjectUniqueName5 = CarLeasePPT\\CarLeasePPT.csproj
+		SccProjectName5 = CarLeasePPT
+		SccLocalPath5 = CarLeasePPT
+		SccProjectUniqueName6 = CarLeasePPT.Spreadsheet\\CarLeasePPT.Spreadsheet.csproj
+		SccProjectName6 = CarLeasePPT.Spreadsheet
+		SccLocalPath6 = CarLeasePPT.Spreadsheet
+	EndGlobalSection
+EndGlobal

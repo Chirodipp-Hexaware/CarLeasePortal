@@ -1,0 +1,63 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.TaxCollectorCreateViewModel
+
+@{
+    ViewBag.Title = Resources.TaxCollector_Create_Title;
+
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.TaxCollector_BreadCrumb, "Index", "TaxCollector")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.TaxCollector_Create_BreadCrumb</li>
+    </ol>
+</nav>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.TaxCollector_Common_Details_Heading</h5>
+                <div class="card-body">
+                    @Html.Partial("_ValidationSummary")
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaxAssessorSelect2, new { @class = "required" })
+                        @Html.DropDownListFor(model => model.TaxAssessorSelect2,
+                            selectList: Enumerable.Empty<SelectListItem>(),
+                            optionLabel: null,
+                            htmlAttributes: new { @class = "form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.TaxAssessorSelect2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaxCollectorName, new { @class = "required" })
+                        @Html.EditorFor(model => model.TaxCollectorName, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.ValidationMessageFor(model => model.TaxCollectorName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VendorCode)
+                        @Html.EditorFor(model => model.VendorCode, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.ValidationMessageFor(model => model.VendorCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
+                <input type="submit" value="@Resources.TaxCollector_Create_Submit_DisplayName" class="btn btn-primary" />
+                @Html.ActionLink(Resources.Common_CancelButton_DisplayName, "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+    <div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+    @Html.HiddenFor(m => m.TaxAssessorId)
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/taxcollector/create")
+}

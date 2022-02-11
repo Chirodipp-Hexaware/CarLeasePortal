@@ -1,0 +1,20 @@
+﻿@using CarLeasePPT.Utility
+@{
+    Layout = "~/Views/Shared/_LayoutAlternate.cshtml";
+    ViewBag.Title = Resources.Account_TokenRequested_Title;
+}
+
+<div class="row">
+    <div class="col-lg-6 offset-3">
+        <div class="card mb-3">
+            <h5 class="card-header text-center">@Resources.Account_TokenRequested_Title</h5>
+            <div class="card-body">
+                <p class="card-text">@Resources.Account_TokenRequested_Message</p>
+                <p class="card-text">
+                    <em>@Resources.Account_TokenRequested_WhiteList_Message</em>
+                </p>
+                <p>@Html.ActionLink(string.Format(Resources.Common_ReturnTo_Link, Resources.Account_Login_Link), "Login", "Account", null, new {@class = "btn btn-secondary"})</p>
+            </div>
+        </div>
+    </div>
+</div>

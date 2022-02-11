@@ -1,0 +1,156 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.AllocationSummaryViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>@Resources.TaxBill_AssetSummary_Title</title>
+    @Styles.Render("~/bundles/css")
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="row">
+                <div class="col-sm">
+                    <p>
+                        @Model.CustomerName<br/>
+                        @Model.CustomerAddress<br/>
+                        @Model.CustomerCity, @Model.CustomerState @Model.CustomerPostalCode
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card mb-3">
+                        <h5 class="card-header text-center">@Resources.TaxBill_AssetSummary_AssetSummary_Heading</h5>
+                        <div class="card-body row">
+                            <div class="col-sm-4">
+                                <strong>@Resources.Common_Vin_DisplayName</strong>
+                            </div>
+                            <div class="col-sm-8">@Model.Vin</div>
+                            <div class="col-sm-4">
+                                <strong>@Resources.TaxBill_AssetSummary_CarDescription_DisplayName</strong>
+                            </div>
+                            <div class="col-sm-8">@Model.CarDescription</div>
+                            <div class="col-sm-4">
+                                <strong>@Resources.Common_LeaseNumber_DisplayName</strong>
+                            </div>
+                            <div class="col-sm-8">@Model.LeaseNumber</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <h5 class="card-header text-center">@Resources.TaxBill_AssetSummary_TaxBillSummary_Heading</h5>
+                        <div class="card-body">
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_Assessor_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8">@Model.AssessingJurisdiction</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_TaxCollector_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8">@Model.CollectingJurisdiction</div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_TaxYear_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8">@Model.TaxYear</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_BillNumber_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8">@Model.BillNumber</div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_CollectorAccountNumber_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8">@Model.CollectorAccountNumber</div>
+                            </div>
+                            @if (Model.CompletedDate.HasValue)
+                            {
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <strong>@Resources.TaxBill_AssetSummary_DateComplete_DisplayName</strong>
+                                    </div>
+                                    <div class="col-sm-8">@Model.CompletedDate.Value.ToString("MM/dd/yyyy")</div>
+                                </div>
+                            }
+                            <div class="row bg-light mt-4">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_AssessedValue_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.AssessedValue.ToString("C0")</div>
+                            </div>
+                            <div class="row bg-light mt-4">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_BaseTax_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.BaseTax.ToString("C")</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_Discount_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.Discount.ToString("C")</div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_PptraCredit_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.PptraCredit.ToString("C")</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_DecalRegistrationFee_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.DecalRegistrationFee.ToString("C")</div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_Penalty_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.Penalty.ToString("C")</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_Interest_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">@Model.Interest.ToString("C")</div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-sm-4">
+                                    <strong>@Resources.TaxBill_Common_TotalAmountOwed_DisplayName</strong>
+                                </div>
+                                <div class="col-sm-8 text-right">
+                                    <strong>@Model.TotalAmountOwed.ToString("C")</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/common")
+</body>
+</html>

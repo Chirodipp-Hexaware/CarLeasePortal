@@ -1,0 +1,278 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.WorkItemEditViewModel
+
+@{
+    ViewBag.Title = Resources.Workitem_Create_Title;
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_BreadCrumb, "Index", "WorkItem")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_Detail_BreadCrumb, "Detail", "WorkItem", new {id = Model.WorkItemId}, null)</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.WorkItem_Edit_BreadCrumb</li>
+    </ol>
+</nav>
+@if (Model.TaxBillCarLeaseId.HasValue)
+{
+    <div class="alert alert-primary" role="alert">
+        <p class="mb-0">@(string.Format(Resources.WorkItem_Edit_FromTaxBillCarLease_Message, Model.TaxBillNumber, Model.LeaseNumber))</p>
+    </div>
+}
+else if (Model.TaxBillId.HasValue)
+{
+    <div class="alert alert-primary" role="alert">
+        <p class="mb-0">@(string.Format(Resources.WorkItem_Edit_FromTaxBill_Message, Model.TaxBillNumber))</p>
+    </div>
+}
+else if (Model.CarLeaseId.HasValue)
+{
+    <div class="alert alert-primary" role="alert">
+        <p class="mb-0">@(string.Format(Resources.WorkItem_Edit_FromLease_Message, Model.LeaseNumber))</p>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Partial("_ValidationSummary")
+    <div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Index_Basics_Heading</h5>
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WorkItemTypeId, new {@class = ""})
+                    @Html.DropDownListFor(m => m.WorkItemTypeId,
+                        new SelectList(Model.WorkItemTypes, "Key", "Value"),
+                        null,
+                        new {@class = "form-control form-control-sm"})
+                    @Html.ValidationMessageFor(model => model.WorkItemTypeId, "", new {@class = "text-danger"})
+                </div>
+                <div class="form-check">
+                    <div class="form-check mb-3">
+                        @Html.CheckBoxFor(m => m.IsUrgent, new {@class = "form-check-input"})
+                        @Html.LabelFor(m => m.IsUrgent, new {@class = "form-check-label"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8" id="notice-panel">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Common_NoticeDetails_Heading</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(model => model.NoticeNumber, new {@class = ""})
+                        @Html.EditorFor(model => model.NoticeNumber, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "50"}})
+                        @Html.ValidationMessageFor(model => model.NoticeNumber, "", new {@class = "text-danger"})
+                    </div>
+                    <div class="form-group col-lg-3">
+                        @Html.LabelFor(model => model.NoticeDate, new {@class = ""})
+                        @Html.EditorFor(model => model.NoticeDate, new {htmlAttributes = new {@class = "form-control form-control-sm"}})
+                        @Html.ValidationMessageFor(model => model.NoticeDate, "", new {@class = "text-danger"})
+                    </div>
+                    <div class="form-group col-lg-3">
+                        @Html.LabelFor(m => m.DueDate)
+                        @Html.EditorFor(m => m.DueDate, new {htmlAttributes = new {@class = "form-control form-control-sm"}})
+                        @Html.ValidationMessageFor(m => m.DueDate, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-3">
+                    <h5 class="card-header">@Resources.WorkItem_Common_Car_Heading</h5>
+                    <div class="card-body">
+                        @if (Model.CarLeaseId.HasValue)
+                        {
+                            
+                        <dl class="dl-horizontal mb-0">
+                            @if (!Model.Vin.IsNullOrWhiteSpace())
+                            {
+                                <dt>@Resources.WorkItem_Common_Vin_Displayname</dt>
+                                <dd>@Model.Vin</dd>
+                            }
+                            @if (!Model.PlateNumber.IsNullOrWhiteSpace())
+                            {
+                                <dt>@Resources.WorkItem_Common_PlateNumber_DisplayName</dt>
+                                <dd>@Model.PlateNumber</dd>
+                            }
+                        </dl>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Vin, new {@class = ""})
+                                @Html.EditorFor(model => model.Vin, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "10"}})
+                                @Html.ValidationMessageFor(model => model.Vin, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PlateNumber, new {@class = ""})
+                                @Html.EditorFor(model => model.PlateNumber, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "10"}})
+                                @Html.ValidationMessageFor(model => model.PlateNumber, "", new {@class = "text-danger"})
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Common_LeaseLessee_Heading</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(model => model.CompanyName, new {@class = ""})
+                        @Html.EditorFor(model => model.CompanyName, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "100"}})
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new {@class = "text-danger"})
+                    </div>
+                    @if (Model.CarLeaseId.HasValue)
+                    {
+                        <dl class="dl-horizontal mb-0">
+                            @if (!Model.LeaseNumber.IsNullOrWhiteSpace())
+                            {
+                                <dt>@Resources.WorkItem_Common_LeaseNumber_DisplayName</dt>
+                                <dd>@Model.LeaseNumber</dd>
+                            }
+                            @if (!Model.LesseeFirstName.IsNullOrWhiteSpace())
+                            {
+                                <dt>@Resources.WorkItem_Common_LesseeFirstName_DisplayName</dt>
+                                <dd>@Model.LesseeFirstName</dd>
+                            }
+                            @if (!Model.LesseeLastName.IsNullOrWhiteSpace())
+                            {
+                                <dt>@Resources.WorkItem_Common_LesseeLastName_DisplayName</dt>
+                                <dd>@Model.LesseeLastName</dd>
+                            }
+                        </dl>
+                    }
+                    else
+                    {
+                        <div class="form-group col-lg-6">
+                            @Html.LabelFor(model => model.LeaseNumber, new {@class = ""})
+                            @Html.EditorFor(model => model.LeaseNumber, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "50"}})
+                            @Html.ValidationMessageFor(model => model.LeaseNumber, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="form-group col-lg-6">
+                            @Html.LabelFor(model => model.LesseeFirstName, new {@class = ""})
+                            @Html.EditorFor(model => model.LesseeFirstName, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "18"}})
+                            @Html.ValidationMessageFor(model => model.LesseeFirstName, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="form-group col-lg-6">
+                            @Html.LabelFor(model => model.LesseeLastName, new {@class = ""})
+                            @Html.EditorFor(model => model.LesseeLastName, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "40"}})
+                            @Html.ValidationMessageFor(model => model.LesseeLastName, "", new {@class = "text-danger"})
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Common_TaxAuthority_Heading</h5>
+            <div class="card-body">
+                @if (Model.TaxBillId.HasValue)
+                {
+                    <dl class="row mb-0">
+                        @if (!Model.TaxCollectorName.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_TaxCollectorName_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.TaxCollectorName</dd>
+                        }
+                        @if (!Model.TaxYear.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_TaxYear_DisplayName</dt>
+                            <dd class="col-lg-12">@($"{Model.TaxYear:F0}")</dd>
+                        }
+                    </dl>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="form-group col-lg">
+                            @Html.LabelFor(model => model.TaxCollectorName, new {@class = ""})
+                            @Html.EditorFor(model => model.TaxCollectorName, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "200"}})
+                            @Html.ValidationMessageFor(model => model.TaxCollectorName, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            @Html.LabelFor(model => model.TaxYear, new {@class = ""})
+                            @Html.EditorFor(model => model.TaxYear, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "4"}})
+                            @Html.ValidationMessageFor(model => model.TaxYear, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Index_Garage_Heading</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-lg">
+                        @Html.LabelFor(model => model.GarageAddress, new {@class = ""})
+                        @Html.EditorFor(model => model.GarageAddress, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "100"}})
+                        @Html.ValidationMessageFor(model => model.GarageAddress, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-5">
+                        @Html.LabelFor(model => model.GarageCity, new {@class = ""})
+                        @Html.EditorFor(model => model.GarageCity, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "60"}})
+                        @Html.ValidationMessageFor(model => model.GarageCity, "", new {@class = "text-danger"})
+                    </div>
+                    <div class="form-group col-lg-4">
+                        @Html.LabelFor(model => model.GarageCounty, new {@class = ""})
+                        @Html.EditorFor(model => model.GarageCounty, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "60"}})
+                        @Html.ValidationMessageFor(model => model.GarageCounty, "", new {@class = "text-danger"})
+                    </div>
+                    <div class="form-group col-lg-3">
+                        @Html.LabelFor(model => model.GarageState, new {@class = ""})
+                        @Html.EditorFor(model => model.GarageState, new {htmlAttributes = new {@class = "form-control form-control-sm", maxlength = "2"}})
+                        @Html.ValidationMessageFor(model => model.GarageState, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.WorkItem_Common_Narrative_Heading</h5>
+                <div class="card-body">
+                    <div class="form-group multiline-8">
+                        @Html.LabelFor(m => m.Narrative, new {@class = "required"})
+                        @Html.EditorFor(m => m.Narrative, new {htmlAttributes = new {@class = "form-control form-control-sm"}})
+                        @Html.ValidationMessageFor(m => m.Narrative, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input type="submit" value="@Resources.WorkItem_Edit_Submit_DisplayName" class="btn btn-primary"/>
+                @Html.ActionLink(Resources.Common_CancelButton_DisplayName, "Index", null, new {@class = "btn btn-danger"})
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.TaxBillId)
+    @Html.HiddenFor(m => m.TaxCollectorId)
+    @Html.HiddenFor(m => m.CarLeaseId)
+    @Html.HiddenFor(m => m.TaxBillNumber)
+    @Html.HiddenFor(m => m.TaxBillCarLeaseId)
+    @Html.HiddenFor(m => m.WorkItemId)
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/taxbill/create")
+}

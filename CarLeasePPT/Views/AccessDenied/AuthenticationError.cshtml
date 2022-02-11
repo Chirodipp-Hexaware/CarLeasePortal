@@ -1,0 +1,17 @@
+﻿@using CarLeasePPT.Utility
+@{
+    Layout = "~/Views/Shared/_LayoutAlternate.cshtml";
+    ViewBag.Title = Resources.AccessDenied_AuthenticationError_Title;
+}
+
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="card mb-3 text-danger border-danger">
+            <h5 class="card-header bg-danger text-white">@Resources.AccessDenied_AuthenticationError_Title</h5>
+            <div class="card-body">
+                <p>@Resources.AccessDenied_AuthenticationError_Message</p>
+                <p>@Html.ActionLink(string.Format(Resources.Common_ReturnTo_Link, Resources.Account_Login_Link), "Login", "Account", null, new {@class = "btn btn-secondary"})</p>
+            </div>
+        </div>
+    </div>
+</div>

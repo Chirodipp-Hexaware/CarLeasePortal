@@ -1,0 +1,23 @@
+﻿@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.WorkItem_AssignToClient_Title;
+    var id = (int) ViewBag.WorkItemId;
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_BreadCrumb, "Index", "WorkItem")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_Detail_BreadCrumb, "Detail", "WorkItem", new {id}, null)</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.WorkItem_AssignToClient_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg-6 offset-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-text">@Resources.WorkItem_AssignToClient_Message</p>
+                <p>@Html.ActionLink(Resources.WorkItem_AssignToClient_Detail_Link, "Detail", "WorkItem", new {id}, new {@class = "btn btn-secondary"})</p>
+            </div>
+        </div>
+    </div>
+</div>

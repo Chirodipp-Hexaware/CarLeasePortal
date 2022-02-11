@@ -1,0 +1,23 @@
+﻿@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.AuditLog_MarkReviewedFailed_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_AuditLog_Link, "Index", "AuditLog")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.AuditLog_MarkReviewedFailed_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg-6 offset-3">
+        <div class="card mb-3">
+            <h5 class="card-header text-center">@Resources.AuditLog_MarkReviewedFailed_Title</h5>
+            <div class="card-body">
+                <p class="card-text">@Resources.AuditLog_MarkReviewedFailed_Message</p>
+                <p>@Html.ActionLink(string.Format(Resources.Common_ReturnTo_Link, Resources.Common_AuditLog_Link), "Index", "AuditLog", null, new {@class = "btn btn-secondary"})</p>
+            </div>
+        </div>
+    </div>
+</div>

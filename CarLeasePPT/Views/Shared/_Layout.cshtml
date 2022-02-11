@@ -1,0 +1,103 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/css")
+    @RenderSection("styles", false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <div class="container">
+            @Html.ActionLink(Resources.Common_Application_Title, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li @Html.Raw(ListItemActiveHelper.ApplyClassMatchAreaAndController(ViewContext, null, "Home", "nav-item"))>
+                        @Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li @Html.Raw(ListItemActiveHelper.ApplyClassMatchAreaAndController(ViewContext, null, "Lease", "nav-item"))>
+                        @Html.ActionLink(Resources.Common_Lease_Link, "Index", "Lease", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li @Html.Raw(ListItemActiveHelper.ApplyClassMatchAreaAndController(ViewContext, null, "TaxBill", "nav-item"))>
+                        @Html.ActionLink(Resources.Common_TaxBills_Link, "Index", "TaxBill", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    @if (User.IsInAnyRole("WORKITEM_CRUD", "WORKITEM_VIEW"))
+                    {
+                        <li @Html.Raw(ListItemActiveHelper.ApplyClassMatchAreaAndController(ViewContext, null, "WorkItem", "nav-item"))>
+                            @Html.ActionLink(Resources.Common_WorkItem_Link, "Index", "WorkItem", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                    }
+                    @*<li>@Html.ActionLink(Resources.Common_Reporting_Link, "Index", "Home", null, new { @class = "nav-link" })</li>*@
+                    @if (User.IsInAnyRole("USER_MANAGEMENT", "AUDIT_LOG", "ASSESSOR_MANAGEMENT", "COLLECTOR_MANAGEMENT"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarManage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Resources.Common_Settings_Menu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarManage">
+                                @if (User.IsInRole("ASSESSOR_MANAGEMENT"))
+                                {
+                                    @Html.ActionLink(Resources.Common_TaxAssessor_Link, "Index", "TaxAssessor", null, new { @class = "dropdown-item" })
+                                }
+                                @if (User.IsInRole("COLLECTOR_MANAGEMENT"))
+                                {
+                                    @Html.ActionLink(Resources.Common_TaxCollector_Link, "Index", "TaxCollector", null, new { @class = "dropdown-item" })
+                                }
+                                @if (User.IsInRole("AUDIT_LOG"))
+                                {
+                                    @Html.ActionLink(Resources.Common_AuditLog_Link, "Index", "AuditLog", null, new { @class = "dropdown-item" })
+                                }
+                                @if (User.IsInRole("USER_MANAGEMENT"))
+                                {
+                                    @Html.ActionLink(Resources.Common_User_Link, "Index", "User", null, new { @class = "dropdown-item" })
+                                }
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @User.Identity.Name
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarAccount">
+                            @Html.ActionLink(Resources.Common_SignOut_Link, "Logout", "Account", new { area = "" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(Resources.Settings_MyAccount_Link, "Account", "Settings", new { area = "" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(Resources.Settings_Password_Link, "Password", "Settings", new { area = "" }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="tiny">@string.Format(Resources.Common_Copyright_Message, DateTime.Now.Year)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="tiny">
+                        @($"v{typeof(Startup).Assembly.GetName().Version}")
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    @RenderSection("scripts", false)
+</body>
+</html>

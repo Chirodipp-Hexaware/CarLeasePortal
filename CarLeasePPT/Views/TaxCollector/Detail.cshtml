@@ -1,0 +1,66 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.TaxCollectorDetailViewModel
+
+@{
+    ViewBag.Title = Resources.TaxCollector_Detail_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.TaxCollector_BreadCrumb, "Index", "TaxCollector")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.TaxCollector_Detail_BreadCrumb</li>
+    </ol>
+</nav>
+@if (Model.IsDeleted)
+{
+    <div class="row">
+        <div class="col-lg">
+            <div class="alert alert-warning" role="alert">
+                @Resources.TaxCollector_Detail_IsDeleted_Message
+            </div>
+        </div>
+    </div>
+}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.TaxCollector_Common_Details_Heading</h5>
+                <div class="card-body">
+                    <dl class="dl-postspace dl-form-mimic mb-0">
+                        <dt>@Resources.TaxCollector_Common_TaxCollectorName_DisplayName</dt>
+                        <dd>@Model.TaxCollectorName</dd>
+                        <dt>@Resources.TaxCollector_Common_VendorCode_DisplayName</dt>
+                        <dd>@Model.VendorCode</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.TaxAssessor_Common_Details_Heading</h5>
+                <div class="card-body">
+                    <dl class="dl-postspace dl-form-mimic mb-0">
+                        <dt>@Resources.TaxAssessor_Common_TaxAssessorName_DisplayName</dt>
+                        <dd>@Model.TaxAssessorName</dd>
+                        <dt>@Resources.TaxAssessor_Common_StateAbbreviation_DisplayName</dt>
+                        <dd>@Model.StateAbbreviation</dd>
+                        @if (!Model.County.IsNullOrWhiteSpace())
+                        {
+                            <dt>@Resources.TaxAssessor_Common_County_DisplayName</dt>
+                            <dd>@Model.County</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-lg">
+        @Html.ActionLink(Resources.TaxCollector_Common_BackToList_Link, "Index", null, new { @class = "btn btn-primary" })
+        @if (!Model.IsDeleted)
+        {
+            @Html.ActionLink(Resources.Common_Edit_Link, "Edit", new { id = Model.TaxCollectorId }, new { @class = "btn btn-secondary" })
+        }
+    </div>
+</div>

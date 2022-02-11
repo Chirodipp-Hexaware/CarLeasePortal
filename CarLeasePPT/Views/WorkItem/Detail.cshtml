@@ -1,0 +1,265 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.WorkItemDetailViewModel
+
+@{
+    ViewBag.Title = Resources.WorkItem_Detail_Title;
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_BreadCrumb, "Index", "WorkItem")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.WorkItem_Detail_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg">
+        @if (Model.IsUrgent)
+        {
+            <div class="alert alert-danger" role="alert">
+                @(string.Format(Resources.WorkItem_Common_PriorityLevel_Message, Resources.WorkItem_Common_IsUrgent_True, Model.WorkItemType))
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-secondary" role="alert">
+                @(string.Format(Resources.WorkItem_Common_PriorityLevel_Message, Resources.WorkItem_Common_IsUrgent_False, Model.WorkItemType))
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    @if (!Model.NoticeNumber.IsNullOrWhiteSpace() || Model.NoticeDate.HasValue || Model.DueDate.HasValue)
+    {
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.WorkItem_Common_NoticeDetails_Heading</h5>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        @if (!Model.NoticeNumber.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-6">@Resources.WorkItem_Common_NoticeNumber_DisplayName</dt>
+                            <dd class="col-lg-6">@Model.NoticeNumber</dd>
+                        }
+                        @if (Model.NoticeDate.HasValue)
+                        {
+                            <dt class="col-lg-6">@Resources.WorkItem_Common_NoticeDate_DisplayName</dt>
+                            <dd class="col-lg-6">@Model.NoticeDate.Value.ToString("MM/dd/yyyy")</dd>
+                        }
+                        @if (Model.DueDate.HasValue)
+                        {
+                            <dt class="col-lg-6">@Resources.WorkItem_Common_DueDate_DisplayName</dt>
+                            <dd class="col-lg-6">@Model.DueDate.Value.ToString("MM/dd/yyyy")</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    }
+    @if (!Model.Vin.IsNullOrWhiteSpace() || !Model.PlateNumber.IsNullOrWhiteSpace())
+    {
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card mb-3">
+                        <h5 class="card-header">@Resources.WorkItem_Common_Car_Heading</h5>
+                        <div class="card-body">
+                            <dl class="dl-horizontal mb-0">
+                                @if (!Model.Vin.IsNullOrWhiteSpace())
+                                {
+                                    <dt>@Resources.WorkItem_Common_Vin_Displayname</dt>
+                                    <dd>@Model.Vin</dd>
+                                }
+                                @if (!Model.PlateNumber.IsNullOrWhiteSpace())
+                                {
+                                    <dt>@Resources.WorkItem_Common_PlateNumber_DisplayName</dt>
+                                    <dd>@Model.PlateNumber</dd>
+                                }
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (!Model.CompanyName.IsNullOrWhiteSpace() || !Model.LeaseNumber.IsNullOrWhiteSpace() || !Model.LesseeFirstName.IsNullOrWhiteSpace() || !Model.LesseeLastName.IsNullOrWhiteSpace())
+    {
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.WorkItem_Common_LeaseLessee_Heading</h5>
+                <div class="card-body">
+                    <dl class="dl-horizontal mb-0">
+                        @if (!Model.CompanyName.IsNullOrWhiteSpace())
+                        {
+                            <dt>@Resources.WorkItem_Common_CompanyName_DisplayName</dt>
+                            <dd>@Model.CompanyName</dd>
+                        }
+                        @if (!Model.LeaseNumber.IsNullOrWhiteSpace())
+                        {
+                            <dt>@Resources.WorkItem_Common_LeaseNumber_DisplayName</dt>
+                            <dd>@Model.LeaseNumber</dd>
+                        }
+                        @if (!Model.LesseeFirstName.IsNullOrWhiteSpace())
+                        {
+                            <dt>@Resources.WorkItem_Common_LesseeFirstName_DisplayName</dt>
+                            <dd>@Model.LesseeFirstName</dd>
+                        }
+                        @if (!Model.LesseeLastName.IsNullOrWhiteSpace())
+                        {
+                            <dt>@Resources.WorkItem_Common_LesseeLastName_DisplayName</dt>
+                            <dd>@Model.LesseeLastName</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    }
+    @if (!Model.TaxCollectorName.IsNullOrWhiteSpace() || !Model.TaxYear.IsNullOrWhiteSpace() || !Model.GarageAddress.IsNullOrWhiteSpace() || !Model.GarageCity.IsNullOrWhiteSpace() || !Model.GarageState.IsNullOrWhiteSpace() || !Model.GarageCounty.IsNullOrWhiteSpace())
+    {
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.WorkItem_Common_TaxAuthority_Heading</h5>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        @if (!Model.TaxCollectorName.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_TaxCollectorName_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.TaxCollectorName</dd>
+                        }
+                        @if (!Model.TaxYear.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_TaxYear_DisplayName</dt>
+                            <dd class="col-lg-12">@($"{Model.TaxYear:F0}")</dd>
+                        }
+                        @if (!Model.GarageAddress.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_GarageAddress_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.GarageAddress</dd>
+                        }
+                        @if (!Model.GarageCity.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_GarageCity_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.GarageCity</dd>
+                        }
+                        @if (!Model.GarageCounty.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_GarageCounty_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.GarageCounty</dd>
+                        }
+                        @if (!Model.GarageState.IsNullOrWhiteSpace())
+                        {
+                            <dt class="col-lg-12">@Resources.WorkItem_Common_GarageState_DisplayName</dt>
+                            <dd class="col-lg-12">@Model.GarageState</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Common_Narrative_Heading</h5>
+            <div class="card-body">
+                <p class="mb-0">@Html.DisplayTextFor(m => m.Narrative)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Detail_Information_Heading</h5>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-lg-12">@Resources.WorkItem_Detail_CreatedByPersonFullName_DisplayName</dt>
+                    <dd class="col-lg-12">@Model.CreatedByPersonFullName</dd>
+                    <dt class="col-lg-12">@Resources.WorkItem_Detail_CreatedOnDateTime_DisplayName</dt>
+                    <dd class="col-lg-12">@Model.CreatedOnDateTime.ToString("dddd, MMMM d, yyyy h:mm tt")</dd>
+                    @if (Model.ModifiedOnDateTime.HasValue)
+                    {
+                        <dt class="col-lg-12">@Resources.WorkItem_Detail_ModifiedByPersonFullName_DisplayName</dt>
+                        <dd class="col-lg-12">@Model.ModifiedByPersonFullName</dd>
+                        <dt class="col-lg-12">@Resources.WorkItem_Detail_ModifiedOnDateTime_DisplayName</dt>
+                        <dd class="col-lg-12">@Model.ModifiedOnDateTime.Value.ToString("dddd, MMMM d, yyyy h:mm tt")</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.WorkItemAttachmentRecords.Any())
+{
+    <div class="row mb-3">
+        <div class="col-lg">
+            <div class="card">
+                <h5 class="card-header">@Resources.Common_Attachments_Heading</h5>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var a in Model.WorkItemAttachmentRecords)
+                        {
+                            <div class="col-lg">
+                                @Html.ActionLink(a.AttachmentName, "ViewAttachment", new { id = a.WorkItemAttachmentId }, new { @class = "btn btn-sm btn-secondary" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="row mb-3">
+    <div class="col-lg">
+        @Html.ActionLink(Resources.WorkItem_Common_BackToList_Link, "Index", null, new { @class = "btn btn-primary" })
+        @if (User.IsInRole("WORKITEM_CRUD") && Model.IsEditable)
+        {
+            @Html.ActionLink(Resources.WorkItem_Detail_CreateActivity_Link, "Create", "WorkItemActivity", new { id = Model.WorkItemId }, new { @class = "btn btn-secondary" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink(Resources.WorkItem_Detail_ResolveWorkItem_Link, "Resolve", "WorkItemActivity", new { id = Model.WorkItemId }, new { @class = "btn btn-secondary" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink(Resources.Common_Edit_Link, "Edit", new { id = Model.WorkItemId }, new { @class = "btn btn-secondary" })
+        }
+    </div>
+</div>
+@if (Model.WorkItemActivityRecords.Any())
+{
+    <div class="row mb-3">
+        <div class="col-lg">
+            <div class="card">
+                <h5 class="card-header">@Resources.WorkItem_Detail_Activities_Heading</h5>
+                <div class="card-body">
+                    @foreach (var a in Model.WorkItemActivityRecords)
+                    {
+                        <div class="row mb-3">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <h5 class="card-header">
+                                        @($"{a.ActivityDateTime:M/d/yyyy h:mm tt} - {a.WorkItemActivityType} - {a.CreatedByPersonName}")
+                                        @if (a.IsPrivate)
+                                        {
+                                            <span class="badge badge-pill badge-danger">@Resources.WorkItem_Common_IsPriviate_True</span>
+                                        }
+                                    </h5>
+                                    <div class="card-body">
+                                        <p class="mb-0">@a.Narrative</p>
+                                    </div>
+                                    @if (a.WorkItemActivityAttachmentRecords.Any())
+                                    {
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                @foreach (var f in a.WorkItemActivityAttachmentRecords)
+                                                {
+                                                    <div class="col-lg">
+                                                        @Html.ActionLink(f.AttachmentName, "ViewAttachment", new { id = f.WorkItemAttachmentId }, new { @class = "btn btn-sm btn-secondary" })
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

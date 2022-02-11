@@ -1,0 +1,46 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.TaxAssessor_Index_Title;
+
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.TaxAssessor_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="mb-3">
+    @Html.ActionLink(Resources.TaxAssessor_Index_Create_Link, "Create", "TaxAssessor", null, new { @class = "btn btn-secondary" })
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <div class="form-check">
+                <input id="show_deleted" class="form-check-input" name="show_expired" type="checkbox" value="true" aria-controls="person_table" aria-label="@Resources.TaxAssessor_Index_ShowDeleted_DisplayName" />
+                <label for="show_deleted" class="form-check-label">@Resources.TaxAssessor_Index_ShowDeleted_DisplayName</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered" id="taxassessor_table">
+        <thead>
+        <tr>
+            <th>@Resources.TaxAssessor_Common_StateAbbreviation_TableHeader</th>
+            <th>@Resources.TaxAssessor_Common_TaxAssessorName_TableHeader</th>
+            <th>@Resources.TaxAssessor_Common_County_TableHeader</th>
+            <th>@Resources.TaxAssessor_Common_IsDeleted_TableHeader</th>
+            <th>@Resources.Common_Actions_TableHeader</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/taxassessor")
+
+}

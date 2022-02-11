@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC8E93B6-14FA-4521-B47D-41CCEB55C138}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarLeasePPT</RootNamespace>
+    <AssemblyName>CarLeasePPT</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44380</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Web.4.7.0\lib\net35\NLog.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccessDeniedController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuditLogController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaseController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\TaxCollectorDataController.cs" />
+    <Compile Include="Controllers\TaxCollectorController.cs" />
+    <Compile Include="Controllers\TaxAssessorController.cs" />
+    <Compile Include="Controllers\TaxBillController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\TaxAssessorDataController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\LeaseDataController.cs" />
+    <Compile Include="Controllers\AuditLogDataController.cs" />
+    <Compile Include="Controllers\TaxBillDataController.cs" />
+    <Compile Include="Controllers\WorkItemDataController.cs" />
+    <Compile Include="Controllers\CarDataController.cs" />
+    <Compile Include="Controllers\UserDataController.cs" />
+    <Compile Include="Controllers\WorkItemActivityController.cs" />
+    <Compile Include="Controllers\WorkItemController.cs" />
+    <Compile Include="CustomViewEngine.cs" />
+    <Compile Include="Filters\LogActionAttribute.cs" />
+    <Compile Include="Filters\AuhorizeRoleAttribute.cs" />
+    <Compile Include="Filters\VerifyPersonSessionAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AntiForgeryTokenHelper.cs" />
+    <Compile Include="Helpers\AuthenticationHelper.cs" />
+    <Compile Include="Helpers\IpAddressHelper.cs" />
+    <Compile Include="Helpers\IsBlockedResult.cs" />
+    <Compile Include="Helpers\ListItemActiveHelper.cs" />
+    <Compile Include="Helpers\PrincipalExtensions.cs" />
+    <Compile Include="Helpers\SessionTokenHelper.cs" />
+    <Compile Include="Helpers\ValidatePasswordBlackList.cs" />
+    <Compile Include="Models\AddAttachmentViewModel.cs" />
+    <Compile Include="Models\AllocationSummaryViewModel.cs" />
+    <Compile Include="Models\AuditLogRunReportViewModel.cs" />
+    <Compile Include="Models\BlockedPersonViewModel.cs" />
+    <Compile Include="Models\CustomClaimTypes.cs" />
+    <Compile Include="Models\DataTableAjaxPostModel.cs" />
+    <Compile Include="Models\TaxCollectorDeleteViewModel.cs" />
+    <Compile Include="Models\TaxCollectorEditViewModel.cs" />
+    <Compile Include="Models\TaxCollectorDetailViewModel.cs" />
+    <Compile Include="Models\TaxCollectorCreateViewModel.cs" />
+    <Compile Include="Models\TaxAssessorDeleteViewModel.cs" />
+    <Compile Include="Models\TaxAssessorEditViewModel.cs" />
+    <Compile Include="Models\TaxAssessorDetailViewModel.cs" />
+    <Compile Include="Models\TaxBillIndexViewModel.cs" />
+    <Compile Include="Models\HomeIndexViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PasswordResetViewModel.cs" />
+    <Compile Include="Models\PersonAccountViewModel.cs" />
+    <Compile Include="Models\NewUserData.cs" />
+    <Compile Include="Models\AuditLogViewModel.cs" />
+    <Compile Include="Models\SecurityPasswordViewModel.cs" />
+    <Compile Include="Models\SetPasswordViewModel.cs" />
+    <Compile Include="Models\TaxBillDetailViewModel.cs" />
+    <Compile Include="Models\AllocationViewModel.cs" />
+    <Compile Include="Models\TaxAssessorCreateViewModel.cs" />
+    <Compile Include="Models\UserEditViewModel.cs" />
+    <Compile Include="Models\UserCreateViewModel.cs" />
+    <Compile Include="Models\UserDetailViewModel.cs" />
+    <Compile Include="Models\LeaseDetailViewModel.cs" />
+    <Compile Include="Models\WorkItemActivityEditViewModel.cs" />
+    <Compile Include="Models\WorkItemActivityCreateViewModel.cs" />
+    <Compile Include="Models\WorkItemEditViewModel.cs" />
+    <Compile Include="Models\WorkItemDetailViewModel.cs" />
+    <Compile Include="Models\WorkItemCreateViewModel.cs" />
+    <Compile Include="Models\WorkItemIndexViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\custom.css">
+      <DependentUpon>custom.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\custom.min.css">
+      <DependentUpon>custom.css</DependentUpon>
+    </Content>
+    <Content Include="Content\select2-bootstrap4.css" />
+    <Content Include="Content\select2-bootstrap4.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="DataTables\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="DataTables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="DataTables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="DataTables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="DataTables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="DataTables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="DataTables\datatables.css" />
+    <Content Include="DataTables\datatables.js" />
+    <Content Include="DataTables\datatables.min.css" />
+    <Content Include="DataTables\datatables.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <None Include="bundleconfig.json" />
+    <None Include="Content\bootstrap\_variables.scss" />
+    <None Include="Content\bootstrap\_utilities.scss" />
+    <None Include="Content\bootstrap\_type.scss" />
+    <None Include="Content\bootstrap\_transitions.scss" />
+    <None Include="Content\bootstrap\_tooltip.scss" />
+    <None Include="Content\bootstrap\_tables.scss" />
+    <None Include="Content\bootstrap\_root.scss" />
+    <None Include="Content\bootstrap\_reboot.scss" />
+    <None Include="Content\bootstrap\_progress.scss" />
+    <None Include="Content\bootstrap\_print.scss" />
+    <None Include="Content\bootstrap\_popover.scss" />
+    <None Include="Content\bootstrap\_pagination.scss" />
+    <None Include="Content\bootstrap\_navbar.scss" />
+    <None Include="Content\bootstrap\_nav.scss" />
+    <None Include="Content\bootstrap\_modal.scss" />
+    <None Include="Content\bootstrap\_mixins.scss" />
+    <None Include="Content\bootstrap\_media.scss" />
+    <None Include="Content\bootstrap\_list-group.scss" />
+    <None Include="Content\bootstrap\_jumbotron.scss" />
+    <None Include="Content\bootstrap\_input-group.scss" />
+    <None Include="Content\bootstrap\_images.scss" />
+    <None Include="Content\bootstrap\_grid.scss" />
+    <None Include="Content\bootstrap\_functions.scss" />
+    <None Include="Content\bootstrap\_forms.scss" />
+    <None Include="Content\bootstrap\_dropdown.scss" />
+    <None Include="Content\bootstrap\_custom-forms.scss" />
+    <None Include="Content\bootstrap\_code.scss" />
+    <None Include="Content\bootstrap\_close.scss" />
+    <None Include="Content\bootstrap\_carousel.scss" />
+    <None Include="Content\bootstrap\_card.scss" />
+    <None Include="Content\bootstrap\_buttons.scss" />
+    <None Include="Content\bootstrap\_button-group.scss" />
+    <None Include="Content\bootstrap\_breadcrumb.scss" />
+    <None Include="Content\bootstrap\_badge.scss" />
+    <None Include="Content\bootstrap\_alert.scss" />
+    <None Include="Content\bootstrap\utilities\_visibility.scss" />
+    <None Include="Content\bootstrap\utilities\_text.scss" />
+    <None Include="Content\bootstrap\utilities\_spacing.scss" />
+    <None Include="Content\bootstrap\utilities\_sizing.scss" />
+    <None Include="Content\bootstrap\utilities\_shadows.scss" />
+    <None Include="Content\bootstrap\utilities\_screenreaders.scss" />
+    <None Include="Content\bootstrap\utilities\_position.scss" />
+    <None Include="Content\bootstrap\utilities\_float.scss" />
+    <None Include="Content\bootstrap\utilities\_flex.scss" />
+    <None Include="Content\bootstrap\utilities\_embed.scss" />
+    <None Include="Content\bootstrap\utilities\_display.scss" />
+    <None Include="Content\bootstrap\utilities\_clearfix.scss" />
+    <None Include="Content\bootstrap\utilities\_borders.scss" />
+    <None Include="Content\bootstrap\utilities\_background.scss" />
+    <None Include="Content\bootstrap\utilities\_align.scss" />
+    <None Include="Content\bootstrap\mixins\_visibility.scss" />
+    <None Include="Content\bootstrap\mixins\_transition.scss" />
+    <None Include="Content\bootstrap\mixins\_text-truncate.scss" />
+    <None Include="Content\bootstrap\mixins\_text-hide.scss" />
+    <None Include="Content\bootstrap\mixins\_text-emphasis.scss" />
+    <None Include="Content\bootstrap\mixins\_table-row.scss" />
+    <None Include="Content\bootstrap\mixins\_size.scss" />
+    <None Include="Content\bootstrap\mixins\_screen-reader.scss" />
+    <None Include="Content\bootstrap\mixins\_resize.scss" />
+    <None Include="Content\bootstrap\mixins\_reset-text.scss" />
+    <None Include="Content\bootstrap\mixins\_pagination.scss" />
+    <None Include="Content\bootstrap\mixins\_nav-divider.scss" />
+    <None Include="Content\bootstrap\mixins\_lists.scss" />
+    <None Include="Content\bootstrap\mixins\_list-group.scss" />
+    <None Include="Content\bootstrap\mixins\_image.scss" />
+    <None Include="Content\bootstrap\mixins\_hover.scss" />
+    <None Include="Content\bootstrap\mixins\_grid.scss" />
+    <None Include="Content\bootstrap\mixins\_grid-framework.scss" />
+    <None Include="Content\bootstrap\mixins\_gradients.scss" />
+    <None Include="Content\bootstrap\mixins\_forms.scss" />
+    <None Include="Content\bootstrap\mixins\_float.scss" />
+    <None Include="Content\bootstrap\mixins\_clearfix.scss" />
+    <None Include="Content\bootstrap\mixins\_caret.scss" />
+    <None Include="Content\bootstrap\mixins\_buttons.scss" />
+    <None Include="Content\bootstrap\mixins\_breakpoints.scss" />
+    <None Include="Content\bootstrap\mixins\_box-shadow.scss" />
+    <None Include="Content\bootstrap\mixins\_border-radius.scss" />
+    <None Include="Content\bootstrap\mixins\_badge.scss" />
+    <None Include="Content\bootstrap\mixins\_background-variant.scss" />
+    <None Include="Content\bootstrap\mixins\_alert.scss" />
+    <None Include="Content\bootstrap\bootstrap.scss" />
+    <None Include="Content\bootstrap\bootstrap-reboot.scss" />
+    <None Include="Content\bootstrap\bootstrap-grid.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Content\custom.scss" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\add_attachment.js" />
+    <Content Include="Scripts\add_attachment.min.js">
+      <DependentUpon>add_attachment.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\auditlog.min.js">
+      <DependentUpon>auditlog.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bundle.js" />
+    <Content Include="Scripts\bundle.min.js">
+      <DependentUpon>bundle.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\common.min.js">
+      <DependentUpon>common.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Properties\PublishProfiles\Custom File System Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\Folder Publish - QA - Precompiled.pubxml" />
+    <None Include="Properties\PublishProfiles\Folder Publish - QA.pubxml" />
+    <None Include="Properties\PublishProfiles\Folder Publish - Release - Precompiled.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\home.min.js">
+      <DependentUpon>home.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\settings_password.js" />
+    <Content Include="Scripts\settings_password.min.js">
+      <DependentUpon>settings_password.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\taxassessor.min.js">
+      <DependentUpon>taxassessor.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\taxcollector.min.js">
+      <DependentUpon>taxcollector.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\taxcollector_create.js" />
+    <Content Include="Scripts\taxcollector.js" />
+    <Content Include="Scripts\taxbill.min.js">
+      <DependentUpon>taxbill.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\taxbill_create.js" />
+    <Content Include="Scripts\taxbill.js" />
+    <Content Include="Scripts\i18n\af.js" />
+    <Content Include="Scripts\i18n\ar.js" />
+    <Content Include="Scripts\i18n\az.js" />
+    <Content Include="Scripts\i18n\bg.js" />
+    <Content Include="Scripts\i18n\bs.js" />
+    <Content Include="Scripts\i18n\ca.js" />
+    <Content Include="Scripts\i18n\cs.js" />
+    <Content Include="Scripts\i18n\da.js" />
+    <Content Include="Scripts\i18n\de.js" />
+    <Content Include="Scripts\i18n\dsb.js" />
+    <Content Include="Scripts\i18n\el.js" />
+    <Content Include="Scripts\i18n\en.js" />
+    <Content Include="Scripts\i18n\es.js" />
+    <Content Include="Scripts\i18n\et.js" />
+    <Content Include="Scripts\i18n\eu.js" />
+    <Content Include="Scripts\i18n\fa.js" />
+    <Content Include="Scripts\i18n\fi.js" />
+    <Content Include="Scripts\i18n\fr.js" />
+    <Content Include="Scripts\i18n\gl.js" />
+    <Content Include="Scripts\i18n\he.js" />
+    <Content Include="Scripts\i18n\hi.js" />
+    <Content Include="Scripts\i18n\hr.js" />
+    <Content Include="Scripts\i18n\hsb.js" />
+    <Content Include="Scripts\i18n\hu.js" />
+    <Content Include="Scripts\i18n\hy.js" />
+    <Content Include="Scripts\i18n\id.js" />
+    <Content Include="Scripts\i18n\is.js" />
+    <Content Include="Scripts\i18n\it.js" />
+    <Content Include="Scripts\i18n\ja.js" />
+    <Content Include="Scripts\i18n\km.js" />
+    <Content Include="Scripts\i18n\ko.js" />
+    <Content Include="Scripts\i18n\lt.js" />
+    <Content Include="Scripts\i18n\lv.js" />
+    <Content Include="Scripts\i18n\mk.js" />
+    <Content Include="Scripts\i18n\ms.js" />
+    <Content Include="Scripts\i18n\nb.js" />
+    <Content Include="Scripts\i18n\nl.js" />
+    <Content Include="Scripts\i18n\pl.js" />
+    <Content Include="Scripts\i18n\ps.js" />
+    <Content Include="Scripts\i18n\pt-BR.js" />
+    <Content Include="Scripts\i18n\pt.js" />
+    <Content Include="Scripts\i18n\ro.js" />
+    <Content Include="Scripts\i18n\ru.js" />
+    <Content Include="Scripts\i18n\sk.js" />
+    <Content Include="Scripts\i18n\sl.js" />
+    <Content Include="Scripts\i18n\sr-Cyrl.js" />
+    <Content Include="Scripts\i18n\sr.js" />
+    <Content Include="Scripts\i18n\sv.js" />
+    <Content Include="Scripts\i18n\th.js" />
+    <Content Include="Scripts\i18n\tr.js" />
+    <Content Include="Scripts\i18n\uk.js" />
+    <Content Include="Scripts\i18n\vi.js" />
+    <Content Include="Scripts\i18n\zh-CN.js" />
+    <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-cookie\js.cookie-2.2.0.min.js" />
+    <Content Include="Scripts\js-cookie\js.cookie.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\taxbill_create.min.js">
+      <DependentUpon>taxbill_create.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\taxcollector_create.min.js">
+      <DependentUpon>taxcollector_create.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\auditlog.js" />
+    <Content Include="Scripts\taxassessor.js" />
+    <Content Include="Scripts\user.min.js">
+      <DependentUpon>user.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\car.js" />
+    <Content Include="Scripts\user.js" />
+    <Content Include="Scripts\car.min.js">
+      <DependentUpon>car.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\workitemactivity_create.js" />
+    <Content Include="Scripts\workitemactivity_create.min.js">
+      <DependentUpon>workitemactivity_create.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\workitem_create.js" />
+    <Content Include="Scripts\workitem_create.min.js">
+      <DependentUpon>workitem_create.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\workitem_index.js" />
+    <Content Include="Scripts\workitem_index.min.js">
+      <DependentUpon>workitem_index.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAlternate.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Account\SessionTerminated.cshtml" />
+    <Content Include="Views\Account\TokenRequested.cshtml" />
+    <Content Include="Views\Account\InvalidToken.cshtml" />
+    <Content Include="Views\Error\FiveHundred.cshtml" />
+    <Content Include="Views\Error\FourOhFour.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Settings\Account.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Lease\Index.cshtml" />
+    <Content Include="Views\Lease\Detail.cshtml" />
+    <Content Include="Views\AuditLog\Index.cshtml" />
+    <Content Include="Views\WorkItem\Index.cshtml" />
+    <Content Include="Views\AuditLog\MarkAllReviewedFailed.cshtml" />
+    <Content Include="Views\AuditLog\MarkReviewedFailed.cshtml" />
+    <Content Include="Views\AuditLog\Detail.cshtml" />
+    <Content Include="Views\WorkItem\Create.cshtml" />
+    <Content Include="Views\AuditLog\RunReport.cshtml" />
+    <Content Include="Views\TaxBill\Detail.cshtml" />
+    <Content Include="Views\TaxBill\Index.cshtml" />
+    <Content Include="Views\Settings\Password.cshtml" />
+    <Content Include="Views\AccessDenied\AuthenticationError.cshtml" />
+    <Content Include="Views\Account\SetPassword.cshtml" />
+    <Content Include="Views\Account\PasswordReset.cshtml" />
+    <Content Include="Views\Account\SetPasswordSuccess.cshtml" />
+    <Content Include="Views\AccessDenied\RestrictedUser.cshtml" />
+    <Content Include="Views\WorkItem\Detail.cshtml" />
+    <Content Include="Views\WorkItem\AssignToClient.cshtml" />
+    <Content Include="Views\TaxBill\Allocation.cshtml" />
+    <Content Include="Views\WorkItem\AddAttachment.cshtml" />
+    <Content Include="Views\WorkItemActivity\AddAttachment.cshtml" />
+    <Content Include="Views\WorkItem\Edit.cshtml" />
+    <Content Include="Views\WorkItemActivity\Create.cshtml" />
+    <Content Include="Web.QA.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\WorkItemActivity\Edit.cshtml" />
+    <Content Include="Views\TaxBill\AssetSummary.cshtml" />
+    <Content Include="Views\TaxBill\View.cshtml" />
+    <Content Include="Views\TaxAssessor\Index.cshtml" />
+    <Content Include="Views\TaxAssessor\Create.cshtml" />
+    <Content Include="Views\TaxAssessor\Detail.cshtml" />
+    <Content Include="Views\TaxAssessor\Edit.cshtml" />
+    <Content Include="Views\TaxAssessor\Delete.cshtml" />
+    <Content Include="Views\TaxCollector\Index.cshtml" />
+    <Content Include="Views\TaxCollector\Create.cshtml" />
+    <Content Include="Views\TaxCollector\Detail.cshtml" />
+    <Content Include="Views\TaxCollector\Edit.cshtml" />
+    <Content Include="Views\TaxCollector\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AuthenticationError\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarLeasePPT.DataAccessLayer\CarLeasePPT.DataAccessLayer.csproj">
+      <Project>{9c960efc-d311-4c43-9575-40f862e09208}</Project>
+      <Name>CarLeasePPT.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.EmailClient\CarLeasePPT.EmailClient.csproj">
+      <Project>{bdff9bb9-165d-4239-b1c0-6882e67449f1}</Project>
+      <Name>CarLeasePPT.EmailClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.Encryption\CarLeasePPT.Encryption.csproj">
+      <Project>{7febe229-3487-4720-8f6c-d7f74da32ab7}</Project>
+      <Name>CarLeasePPT.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.Spreadsheet\CarLeasePPT.Spreadsheet.csproj">
+      <Project>{4f844af2-6ee6-4c28-b295-345243bd9f84}</Project>
+      <Name>CarLeasePPT.Spreadsheet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.Utility\CarLeasePPT.Utility.csproj">
+      <Project>{932cc67d-60ba-4604-b2bf-04cfee2c0d2b}</Project>
+      <Name>CarLeasePPT.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2434</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44380/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

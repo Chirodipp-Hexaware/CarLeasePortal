@@ -1,0 +1,129 @@
+﻿@using CarLeasePPT.Controllers
+@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.HomeIndexViewModel
+@{
+    ViewBag.Title = Resources.Home_Index_Title;
+    var uic = (int) ViewBag.UnworkedItemCount;
+    var pe = (HomeController.PasswordExpiration) ViewBag.PasswordExpiration;
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+    var message = string.Format(Resources.Home_Index_UnworkedWorkItem_Message, uic.Equals(1) ? "is" : "are", uic, uic.Equals(1) ? "" : "s");
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">@Resources.Common_Dashboard_Link</li>
+    </ol>
+</nav>
+@if (pe.ShowMessage)
+{
+    <div class="row">
+        <div class="col-lg">
+            @if (pe.IsDanger)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @string.Format(Resources.Home_Index_PasswordExpiresToday_Message, pe.TimeRemaining.Hours, pe.TimeRemaining.Hours.Equals(1) ? string.Empty : "s")
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    @string.Format(Resources.Home_Index_PasswordExpiresWarning_Message, pe.TimeRemaining.Days, pe.TimeRemaining.Days.Equals(1) ? string.Empty : "s", pe.TimeRemaining.Hours, pe.TimeRemaining.Hours.Equals(1) ? string.Empty : "s")
+                </div>
+            }
+        </div>
+    </div>
+}
+@if (User.IsInRole("WORKITEM_CRUD") && !uic.Equals(0))
+{
+    <div class="alert alert-primary" role="alert">
+        <p class="mb-0">@message</p>
+    </div>
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.VIN)
+                            @Html.TextBoxFor(m => m.VIN, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LeaseNumber)
+                            @Html.TextBoxFor(m => m.LeaseNumber, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PlateNumber)
+                            @Html.TextBoxFor(m => m.PlateNumber, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TaxAccountNumber)
+                            @Html.TextBoxFor(m => m.TaxAccountNumber, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.BillNumber)
+                            @Html.TextBoxFor(m => m.BillNumber, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LesseeLastName)
+                            @Html.TextBoxFor(m => m.LesseeLastName, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LesseeFirstName)
+                            @Html.TextBoxFor(m => m.LesseeFirstName, new {@class = "form-control form-control-sm"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-0">
+                    <div class="col-lg-2">
+                        <div class="form-group mb-0">
+                            <input type="button" class="btn btn-block btn-sm btn-primary" value="Search" id="lease_search_table_run">
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group mb-0">
+                            <input type="button" class="btn btn-block btn-sm btn-secondary" value="Reset" id="lease_search_table_clear">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered compact dataTable_custom" id="lease_search_table">
+                <thead>
+                <tr>
+                    <th>@Resources.Home_Index_LeaseNumber_TableHeader</th>
+                    <th>@Resources.Home_Index_Vin_TableHeader</th>
+                    <th>@Resources.Home_Index_LesseeFullName_TableHeader</th>
+                    <th>@Resources.Home_Index_CarMake_TableHeader</th>
+                    <th>@Resources.Home_Index_CarModel_TableHeader</th>
+                    <th>@Resources.Home_Index_ModelYear_TableHeader</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/home")
+}

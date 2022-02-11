@@ -1,0 +1,18 @@
+﻿@{
+    Html.ViewData.ModelState.TryGetValue(Html.ViewData.TemplateInfo.HtmlFieldPrefix, out var state);
+    IEnumerable<ModelState> localModelState = state != null ? new[] {state} : new ModelState[0];
+}
+@if (localModelState.SelectMany(t => t.Errors).Any() && Html.ViewData.ModelState.Any(k => k.Key.Equals("")))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-dismissible alert-danger" id="error_summary">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                @foreach (var modelError in Html.ViewData.ModelState.Where(k => k.Key.Equals("")).SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <p class="mb-0">@modelError.ErrorMessage</p>
+                }
+            </div>
+        </div>
+    </div>
+}

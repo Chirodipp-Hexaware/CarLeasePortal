@@ -1,0 +1,39 @@
+﻿@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.User_Delete_Title;
+    string personFullName = ViewBag.PersonFullName;
+    string emailAddress = ViewBag.EmailAddress;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.User_BreadCrumb, "Index", "User")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.User_Delete_BreadCrumb</li>
+    </ol>
+</nav>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg">
+            <div class="alert alert-warning" role="alert">
+                <div class="row">
+                    <div class="col-lg">
+                        <p>
+                            @Html.Raw(string.Format(Resources.User_Delete_Message, personFullName, emailAddress));
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        @Html.ActionLink(string.Format(Resources.User_Delete_Cancel_DisplayName, personFullName), "Index", null, new {@class = "btn btn-primary btn-block"})
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="submit" value="@string.Format(Resources.User_Delete_Submit_DisplayName, personFullName)" class="btn btn-danger btn-block"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,63 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.AuditLogRunReportViewModel
+
+@{
+    ViewBag.Title = Resources.AuditLog_RunReport_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_AuditLog_Link, "Index", "AuditLog")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.AuditLog_RunReport_BreadCrumb</li>
+    </ol>
+</nav>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg">
+            <div class="card mb-3">
+                <div class="card-body">
+                    @Html.Partial("_ValidationSummary")
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StartDateTime, new {@class = "required"})
+                                @Html.EditorFor(m => m.StartDateTime, new {htmlAttributes = new {@class = "form-control form-control-sm"}})
+                                @Html.ValidationMessageFor(m => m.StartDateTime, "", new {@class = "text-danger"})
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.EndDateTime, new {@class = "required"})
+                                @Html.EditorFor(m => m.EndDateTime, new {htmlAttributes = new {@class = "form-control form-control-sm"}})
+                                @Html.ValidationMessageFor(m => m.EndDateTime, "", new {@class = "text-danger"})
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(m => m.IncludeInfo, new {@class = "form-check-input"})
+                                @Html.LabelFor(m => m.IncludeInfo, new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(m => m.IncludeReviewed, new {@class = "form-check-input"})
+                                @Html.LabelFor(m => m.IncludeReviewed, new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-0">
+                        <div class="col-lg-2">
+                            <div class="form-group mb-0">
+                                <input type="submit" class="btn btn-block btn-sm btn-primary" value="@Resources.AuditLog_RunReport_Submit_DipslayName">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

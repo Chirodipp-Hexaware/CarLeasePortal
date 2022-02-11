@@ -1,0 +1,31 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.Car_Index_Title;
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.Car_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered compact dataTable_custom" id="car_table">
+        <thead>
+        <tr>
+            <th>@Resources.Car_Index_VIN_TableHeader</th>
+            <th>@Resources.Car_Index_CarMake_TableHeader</th>
+            <th>@Resources.Car_Index_CarModel_TableHeader</th>
+            <th>@Resources.Car_Index_ModelYear_TableHeader</th>
+            <th>@Resources.Common_Actions_TableHeader</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/car")
+}

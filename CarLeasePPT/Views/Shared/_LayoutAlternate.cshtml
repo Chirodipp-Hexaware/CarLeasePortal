@@ -1,0 +1,34 @@
+﻿@using CarLeasePPT.Utility
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@Resources.Common_Application_Title - @ViewBag.Title</title>
+    @Styles.Render("~/bundles/css")
+</head>
+<body class="alt-top-padding">
+<div class="container">
+    @RenderBody()
+    <footer class="d-block d-sm-none">
+        <p class="tiny">@string.Format(Resources.Common_Copyright_Message, DateTime.Now.Year)</p>
+        <p class="tiny">
+            @($"v{typeof(Startup).Assembly.GetName().Version}")
+        </p>
+    </footer>
+</div>
+<div class="d-none d-sm-block">
+    <footer class="stickyFooter">
+        <p class="tiny">@string.Format(Resources.Common_Copyright_Message, DateTime.Now.Year)</p>
+        <p class="tiny">
+            @($"v{typeof(Startup).Assembly.GetName().Version}")
+        </p>
+    </footer>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/common")
+</body>
+</html>

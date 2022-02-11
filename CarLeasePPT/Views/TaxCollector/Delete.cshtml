@@ -1,0 +1,57 @@
+﻿@model CarLeasePPT.Models.TaxCollectorDeleteViewModel
+@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.TaxCollector_Delete_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.TaxCollector_BreadCrumb, "Index", "User")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.TaxCollector_Delete_BreadCrumb</li>
+    </ol>
+</nav>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Partial("_ValidationSummary")
+    <div class="row">
+        <div class="col-lg">
+            <div class="alert alert-warning" role="alert">
+                <div class="row">
+                    <div class="col-lg">
+                        <p class="mb-0">
+                            @Html.Raw(string.Format(Resources.TaxCollector_Delete_ConfirmDelete_Message, Model.TaxCollectorName, Model.VendorCode))
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(m => m.ConfirmDelete, new { @class = "form-check-input" })
+                                @Html.LabelFor(m => m.ConfirmDelete, new { @class = "form-check-label" })
+                                @Html.ValidationMessageFor(m => m.ConfirmDelete, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg">
+            <div class="form-group">
+                <input type="submit" value="@Resources.TaxCollector_Delete_Submit_DisplayName" class="btn btn-primary" />
+                @Html.ActionLink(Resources.Common_CancelButton_DisplayName, "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.TaxCollectorId)
+}

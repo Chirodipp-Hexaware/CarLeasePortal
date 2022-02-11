@@ -1,0 +1,112 @@
+[
+  {
+    "outputFileName": "Scripts/workitemactivity_create.min.js",
+    "inputFiles": [
+      "Scripts/workitemactivity_create.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/workitem_create.min.js",
+    "inputFiles": [
+      "Scripts/workitem_create.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/car.min.js",
+    "inputFiles": [
+      "Scripts/car.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/user.min.js",
+    "inputFiles": [
+      "Scripts/user.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/taxbill_create.min.js",
+    "inputFiles": [
+      "Scripts/taxbill_create.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/taxbill.min.js",
+    "inputFiles": [
+      "Scripts/taxbill.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/settings_password.min.js",
+    "inputFiles": [
+      "Scripts/settings_password.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/home.min.js",
+    "inputFiles": [
+      "Scripts/home.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/common.min.js",
+    "inputFiles": [
+      "Scripts/common.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/auditlog.min.js",
+    "inputFiles": [
+      "Scripts/auditlog.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/add_attachment.min.js",
+    "inputFiles": [
+      "Scripts/add_attachment.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/workitem_index.min.js",
+    "inputFiles": [
+      "Scripts/workitem_index.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/taxcollector.min.js",
+    "inputFiles": [
+      "Scripts/taxcollector.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/taxcollector_create.min.js",
+    "inputFiles": [
+      "Scripts/taxcollector_create.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/taxassessor.min.js",
+    "inputFiles": [
+      "Scripts/taxassessor.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bundle.js",
+    "inputFiles": [
+      "Scripts/add_attachment.js",
+      "Scripts/auditlog.js",
+      "Scripts/common.js",
+      "Scripts/home.js",
+      "Scripts/settings_password.js",
+      "Scripts/taxassessor.js",
+      "Scripts/taxbill.js",
+      "Scripts/taxbill_create.js",
+      "Scripts/taxcollector.js",
+      "Scripts/taxcollector_create.js",
+      "Scripts/user.js",
+      "Scripts/car.js",
+      "Scripts/workitem_create.js",
+      "Scripts/workitem_index.js",
+      "Scripts/workitemactivity_create.js"
+    ]
+  }
+]

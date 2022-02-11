@@ -1,0 +1,56 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.AddAttachmentViewModel
+
+@{
+    ViewBag.Title = Resources.WorkItemActivity_AddAttachment_Title;
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_BreadCrumb, "Index", "WorkItem")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItem_Detail_BreadCrumb, "Detail", "WorkItem", new { id = Model.WorkItemId }, null)</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.WorkItemActivity_Detail_BreadCrumb, "Detail", "WorkItem", new { id = Model.WorkItemId }, null)</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.WorkItemActivity_AddAttachment_BreadCrumb</li>
+    </ol>
+</nav>
+@using (Html.BeginForm("AddAttachment", "WorkItemActivity", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Partial("_ValidationSummary")
+    <div class="row">
+        <div class="col-lg">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card mb-3">
+                        <h5 class="card-header">@Resources.WorkItemActivity_AddAttachment_Heading</h5>
+                        <div class="card-body">
+                            <p class="card-text">@Resources.WorkItemActivity_AddAttachment_Message</p>
+                            <div class="custom-file focus">
+                                @Html.LabelFor(model => model.UploadedFiles, new { @class = "custom-file-label" })
+                                @Html.TextBoxFor(m => m.UploadedFiles, new { type = "file", name = "UploadedFiles", @class = "custom-file-input", multiple = "multiple", required = "required" })
+                                @Html.ValidationMessageFor(model => model.UploadedFiles, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    <div class="form-group">
+                        <input type="submit" value="@Resources.WorkItemActivity_AddAttachment_Submit_DisplayName" class="btn btn-primary" />
+                        @Html.ActionLink(Resources.Common_CancelButton_DisplayName, "Detail", "WorkItem", new { id = Model.WorkItemId }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.WorkItemId)
+    @Html.HiddenFor(m => m.WorkItemActivityId)
+}
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/add_attachment.js")
+}

@@ -1,0 +1,213 @@
+﻿// Default Bootstrap Variable Overrides
+$font-size-base: 0.925rem;
+$blue: #07689F;
+
+$border-radius: 0.1rem;
+$border-radius-lg: 0.15rem;
+$border-radius-sm: 0.05rem;
+
+// Import Bootstrap 4
+@import "Content/bootstrap/bootstrap";
+
+// Custom Content
+$row-bg-level: -10;
+$row-border-level: 0;
+$row-color-level: 6;
+
+@each $value in ("danger", "warning") {
+    tr.#{$value}-row {
+        color: theme-color-level($value, $row-color-level);
+        background-color: theme-color-level($value, $row-bg-level);
+
+        & > td {
+            border-bottom: 1px solid theme-color-level($value, $row-border-level) !important;
+            border-top: none;
+
+            &:first-of-type {
+                border-left: 1px solid theme-color-level($value, $row-border-level) !important;
+            }
+
+            &:last-of-type {
+                border-right: 1px solid theme-color-level($value, $row-border-level) !important;
+            }
+        }
+    }
+}
+
+@each $value in (8, 16, 24) {
+    .multiline-#{$value} textarea {
+        height: #{$value}em;
+    }
+}
+
+.dataTable_custom {
+    td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    th {
+        line-height: 0.5em;
+    }
+
+    .btn-sm {
+        line-height: 1.25;
+    }
+}
+
+dl.dl-postspace > dd {
+    margin-bottom: 0.75em;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    & > ul > li {
+        margin-bottom: 0.25em;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+footer {
+    margin: 2.5rem 0;
+    border-top: 1px solid #000;
+
+    li {
+        float: left;
+        margin-right: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        &:last-of-type {
+            margin-right: auto;
+        }
+    }
+
+    p {
+        clear: left;
+        margin-bottom: 0;
+    }
+}
+
+label.disabled {
+    color: #ccc;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    padding-bottom: 1.25rem;
+    padding-top: 0;
+}
+
+body.alt-top-padding {
+    padding-top: 2.5rem;
+}
+
+h1, h2, h5, h4, h5, h6 {
+    font-weight: 700;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+p.tiny {
+    font-size: smaller;
+    color: gray;
+}
+
+.stickyFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: none;
+    margin: 0 auto;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.focus {
+}
+
+.search_filter {
+}
+
+.xscroll {
+    overflow-x: auto;
+    max-width: 100vw;
+}
+
+dl.dl-form-mimic {
+    margin-bottom: 1rem;
+}
+
+.select2 {
+}
+
+.ev {
+}
+
+.action {
+    width: 1px;
+}
+
+#change-password-card {
+    display: none;
+}
+
+
+#profile-form {
+    display: none;
+}
+
+
+.td-nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+thead tr th {
+    background: #f5f5f5;
+}
+
+table {
+    /* Override table border spacing - remove gaps*/
+    border-spacing: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.required:after {
+    content: " *";
+    color: #f00;
+}
+
+label {
+    font-weight: bold;
+}
+
+#taxbill_allocation_table_length, #taxbill_allocation_table_info {
+    padding-left: 1em;
+}
+
+#taxbill_allocation_table_filter, #taxbill_allocation_table_paginate {
+    padding-right: 1em;
+}

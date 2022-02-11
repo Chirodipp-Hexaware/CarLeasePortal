@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9C960EFC-D311-4C43-9575-40F862E09208}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarLeasePPT.DataAccessLayer</RootNamespace>
+    <AssemblyName>CarLeasePPT.DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.15.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.15\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssessmentRatioMaster.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssetStatus.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLog.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLogReportRecord.cs" />
+    <Compile Include="AuditLogEngine.cs" />
+    <Compile Include="AuditLogListData.cs" />
+    <Compile Include="AuditLogDetailRecord.cs" />
+    <Compile Include="AuditLogListRecord.cs" />
+    <Compile Include="AuthenticationFailure.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationFailureEngine.cs" />
+    <Compile Include="BlockedPassword.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BlockedPasswordEngine.cs" />
+    <Compile Include="BlockSequenceRecord.cs" />
+    <Compile Include="Company.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CredentialResetEngine.cs" />
+    <Compile Include="CustomerAddress.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAddressRecord.cs" />
+    <Compile Include="DocumentEngine.cs" />
+    <Compile Include="FileRecord.cs" />
+    <Compile Include="HexaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HexaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HexaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HexaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HexaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="IsBlockedResult.cs" />
+    <Compile Include="LeaseAttachment.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseAttachmentType.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseStatus.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parcel.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParcelTaxBill.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAuthentication.cs" />
+    <Compile Include="PersonBlock.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonEngine.cs" />
+    <Compile Include="PersonRecord.cs" />
+    <Compile Include="PersonRole.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonSecurity.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonSecurityEngine.cs" />
+    <Compile Include="PersonSecurityRecord.cs" />
+    <Compile Include="PersonSecurityReset.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonSecurityResetRecord.cs" />
+    <Compile Include="PersonSession.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonTokenRecord.cs" />
+    <Compile Include="PhysicalAddress.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhysicalAddressRecord.cs" />
+    <Compile Include="Preference.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PreferenceEngine.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Select2AjaxPostModel.cs" />
+    <Compile Include="Select2Data.cs" />
+    <Compile Include="TaxAllocationRecord.cs" />
+    <Compile Include="TaxAssessor.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxCollectorRecord.cs" />
+    <Compile Include="TaxCollectorEngine.cs" />
+    <Compile Include="TaxAssessorEngine.cs" />
+    <Compile Include="TaxCollectorListData.cs" />
+    <Compile Include="TaxAssessorListData.cs" />
+    <Compile Include="TaxCollectorListRecord.cs" />
+    <Compile Include="TaxAssessorListRecord.cs" />
+    <Compile Include="TaxAssessorRecord.cs" />
+    <Compile Include="TaxBill.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxBillAssetSummaryRecord.cs" />
+    <Compile Include="TaxBillAttachment.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseAttachmentRecord.cs" />
+    <Compile Include="TaxBillAttachmentRecord.cs" />
+    <Compile Include="TaxBillAttachmentType.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxBillEngine.cs" />
+    <Compile Include="TaxBillListRecord.cs" />
+    <Compile Include="TaxBillRecord.cs" />
+    <Compile Include="TaxBillCarLease.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxBillCarLeaseRecord.cs" />
+    <Compile Include="TaxCollector.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxPayment.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRecord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedeemedToken.cs" />
+    <Compile Include="RoleEngine.cs" />
+    <Compile Include="RoleRecord.cs" />
+    <Compile Include="SecurityMethod.cs" />
+    <Compile Include="UserListData.cs" />
+    <Compile Include="LeaseEngine.cs" />
+    <Compile Include="CarEngine.cs" />
+    <Compile Include="CarLease.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarLeaseRecord.cs" />
+    <Compile Include="LeaseSearchListData.cs" />
+    <Compile Include="TaxBillListData.cs" />
+    <Compile Include="WorkItemListData.cs" />
+    <Compile Include="CarListData.cs" />
+    <Compile Include="LeaseSearchRecord.cs" />
+    <Compile Include="CarMaster.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarMasterRecord.cs" />
+    <Compile Include="CarValuation.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDocumentFileStore.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItem.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItemActivity.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItemActivityRecord.cs" />
+    <Compile Include="WorkItemActivityType.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItemAttachment.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItemAttachmentRecord.cs" />
+    <Compile Include="WorkItemEngine.cs" />
+    <Compile Include="WorkItemListRecord.cs" />
+    <Compile Include="WorkItemRecord.cs" />
+    <Compile Include="WorkItemStatus.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItemType.cs">
+      <DependentUpon>HexaModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="HexaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HexaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HexaModel.edmx.diagram">
+      <DependentUpon>HexaModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarLeasePPT.Encryption\CarLeasePPT.Encryption.csproj">
+      <Project>{7febe229-3487-4720-8f6c-d7f74da32ab7}</Project>
+      <Name>CarLeasePPT.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.Spreadsheet\CarLeasePPT.Spreadsheet.csproj">
+      <Project>{4f844af2-6ee6-4c28-b295-345243bd9f84}</Project>
+      <Name>CarLeasePPT.Spreadsheet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarLeasePPT.Utility\CarLeasePPT.Utility.csproj">
+      <Project>{932cc67d-60ba-4604-b2bf-04cfee2c0d2b}</Project>
+      <Name>CarLeasePPT.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HexaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HexaModel.edmx</DependentUpon>
+      <LastGenOutput>HexaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="HexaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HexaModel.edmx</DependentUpon>
+      <LastGenOutput>HexaModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09005786ea7d4eaf93d38013c886f257" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="HexaModel.AssessmentRatioMaster" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.AssetStatus" Width="1.5" PointX="4.5" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.AuditLog" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.CustomerAddress" Width="1.5" PointX="9" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.LeaseAttachmentType" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.LeaseStatus" Width="1.5" PointX="4.5" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.Parcel" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.ParcelTaxBill" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.Person" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.PersonRole" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.PersonSession" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.PhysicalAddress" Width="1.5" PointX="12" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.Preference" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.Role" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxAssessor" Width="1.5" PointX="1.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxBill" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxBillAttachmentType" Width="1.5" PointX="3.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxBillCarLease" Width="1.5" PointX="9" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxCollector" Width="1.5" PointX="1.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.TaxPayment" Width="1.5" PointX="1.375" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.CarLease" Width="1.5" PointX="6.75" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.CarMaster" Width="1.5" PointX="4.5" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.CarValuation" Width="1.5" PointX="9" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.WorkItemActivityType" Width="1.5" PointX="9" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.WorkItemStatu" Width="1.5" PointX="6.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.WorkItemType" Width="1.5" PointX="6.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HexaModel.ViewDocumentFileStore" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="HexaModel.FK_CarLease_AssetStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_AuditLog_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_AuditLog_Person_ReviewedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_CustomerAddress_CarLease" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_CarLease_LeaseStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_Parcel_TaxAssessor" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_ParcelTaxBill_Parcel" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_PhysicalAddress_Parcel" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_ParcelTaxBill_TaxBill" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_PersonRole_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_PersonSession_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_PersonRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_PhysicalAddress_CarLease" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_TaxCollector_TaxAssessor" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_TaxBill_TaxCollector" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_TaxBill_TaxPayment" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillCarLease_TaxBill" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillCarLease_CarLease" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_CarLease_CarMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HexaModel.FK_CarValuation_CarLease" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HexaModel.PersonSecurityReset" Width="1.5" PointX="3" PointY="47.375" />
+        <AssociationConnector Association="HexaModel.FK_PersonSecurityReset_Person" />
+        <EntityTypeShape EntityType="HexaModel.PersonSecurity" Width="1.5" PointX="3" PointY="42.875" />
+        <AssociationConnector Association="HexaModel.FK_PersonSecurity_Person" />
+        <AssociationConnector Association="HexaModel.FK_PersonSecurity_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_PersonSecurity_Person_ModifiedBy" />
+        <EntityTypeShape EntityType="HexaModel.AuthenticationFailure" Width="1.5" PointX="3" PointY="51.375" />
+        <AssociationConnector Association="HexaModel.FK_AuthenticationFailure_Person" />
+        <EntityTypeShape EntityType="HexaModel.PersonBlock" Width="1.5" PointX="3" PointY="54.625" />
+        <AssociationConnector Association="HexaModel.FK_PersonBlock_Person" />
+        <AssociationConnector Association="HexaModel.FK_PersonBlock_PersonOverriddenBy" />
+        <EntityTypeShape EntityType="HexaModel.WorkItem" Width="1.5" PointX="12" PointY="26.75" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_Person_ModifiedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_TaxBill" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_CarLease" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_CarMaster" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_WorkItemType" />
+        <EntityTypeShape EntityType="HexaModel.Company" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="HexaModel.FK_CarLease_Company" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_TaxCollector" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_Company" />
+        <EntityTypeShape EntityType="HexaModel.LeaseAttachment" Width="1.5" PointX="9" PointY="28.875" />
+        <EntityTypeShape EntityType="HexaModel.TaxBillAttachment" Width="1.5" PointX="6" PointY="12.25" />
+        <EntityTypeShape EntityType="HexaModel.WorkItemActivity" Width="1.5" PointX="14.25" PointY="22.125" />
+        <EntityTypeShape EntityType="HexaModel.WorkItemAttachment" Width="1.5" PointX="16.5" PointY="23.75" />
+        <AssociationConnector Association="HexaModel.FK_LeaseAttachment_LeaseAttachmentType" />
+        <AssociationConnector Association="HexaModel.FK_LeaseAttachment_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_LeaseAttachment_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_LeaseAttachment_Person_ModifiedBy" />
+        <AssociationConnector Association="HexaModel.FK_LeaseAttachment_CarLease" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillAttachment_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillAttachment_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillAttachment_Person_ModifiedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemActivity_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemActivity_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemAttachment_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemAttachment_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemAttachment_Person_ModifiedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillAttachment_TaxBill" />
+        <AssociationConnector Association="HexaModel.FK_TaxBillAttachment_TaxBillAttachmentType" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemActivity_WorkItem" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemAttachment_WorkItem" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemActivity_WorkItemActivityType" />
+        <AssociationConnector Association="HexaModel.FK_WorkItemAttachment_WorkItemActivity" />
+        <EntityTypeShape EntityType="HexaModel.BlockedPassword" Width="1.5" PointX="10.375" PointY="0.75" />
+        <AssociationConnector Association="HexaModel.FK_WorkItem_TaxBillCarLease" />
+        <AssociationConnector Association="HexaModel.FK_TaxAssessor_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxAssessor_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxAssessor_Person_ModifiedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxCollector_Person_CreatedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxCollector_Person_DeletedBy" />
+        <AssociationConnector Association="HexaModel.FK_TaxCollector_Person_ModifiedBy" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

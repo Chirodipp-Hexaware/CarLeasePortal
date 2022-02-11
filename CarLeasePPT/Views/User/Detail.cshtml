@@ -1,0 +1,79 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.UserDetailViewModel
+
+@{
+    ViewBag.Title = Resources.User_Detail_Title;
+    var statusHeading = string.Format(Resources.User_Common_Status_Heading, Model.IsExpired ? Resources.User_Common_Status_Expired_Message : Resources.User_Common_Status_Active_Message);
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.User_BreadCrumb, "Index", "User")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.User_Detail_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.User_Common_Details_Heading</h5>
+            <div class="card-body">
+                <dl class="dl-postspace dl-form-mimic mb-0">
+                    <dt>@Resources.User_Common_FullName_DisplayName</dt>
+                    <dd>@Model.FullName</dd>
+                    <dt>@Resources.User_Common_PreferredName_DisplayName</dt>
+                    <dd>@Model.PreferredName</dd>
+                    <dt>@Resources.User_Common_EmailAddress_DisplayName</dt>
+                    <dd>@Model.EmailAddress</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header">@statusHeading</h5>
+            <div class="card-body">
+                <dl class="dl-postspace dl-form-mimic mb-0">
+                    <dt>@Resources.User_Common_EffectiveDate</dt>
+                    <dd>@(Model.EffectiveDateTime.ToString("dddd, MMMM d, yyyy h:mm:ss tt"))</dd>
+                    @if (Model.ExpirationDateTime.HasValue)
+                    {
+                        <dt>@Resources.User_Common_ExpirationDate</dt>
+                        <dd>@(Model.ExpirationDateTime.Value.ToString("dddd, MMMM d, yyyy h:mm:ss tt"))</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.User_Common_Roles_Heading</h5>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    @if (!Model.AssignedRoles.Any())
+                    {
+                        <li>@Resources.Common_NoAssignedRoles_Message</li>
+                    }
+                    else
+                    {
+                        foreach (var role in Model.AssignedRoles)
+                        {
+                            <li>@role</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        @Html.ActionLink(Resources.User_Common_BackToList_Link, "Index", null, new { @class = "btn btn-primary" })
+        @if (!Model.IsExpired)
+        {
+            @Html.ActionLink(Resources.Common_Edit_Link, "Edit", new { id = Model.PersonId }, new { @class = "btn btn-secondary" })
+        }
+        @if (Model.IsLocked)
+        {
+            @Html.ActionLink(Resources.User_Unlock_Link, "Unlock", new { id = Model.PersonId }, new { @class = "btn btn-warning" })
+        }
+    </div>
+</div>

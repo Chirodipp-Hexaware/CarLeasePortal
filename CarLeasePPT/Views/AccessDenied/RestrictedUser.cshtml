@@ -1,0 +1,18 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.BlockedPersonViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAlternate.cshtml";
+    ViewBag.Title = Resources.AccessDenied_BlockedPerson_Title;
+}
+
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="card mb-3 text-danger border-danger">
+            <h5 class="card-header bg-danger text-white">@Resources.AccessDenied_BlockedPerson_Title</h5>
+            <div class="card-body">
+                <p>@Resources.AccessDenied_BlockedPerson_Message</p>
+                <p>@string.Format(Resources.AccessDenied_BlockedPerson_Expiration_Message, Model.ExpirationDateTime, Model.TimeZone)</p>
+            </div>
+        </div>
+    </div>
+</div>

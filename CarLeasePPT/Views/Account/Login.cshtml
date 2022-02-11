@@ -1,0 +1,58 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAlternate.cshtml";
+    ViewBag.Title = Resources.Account_Login_Title;
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-6 offset-3">
+                <div class="row ">
+                    <div class="col-lg">
+                        <div class="card mb-3">
+                            <h5 class="card-header text-center">@Resources.Common_Application_Title</h5>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    @Html.Partial("_ValidationSummary")
+                                </p>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.EmailAddress, new {@class = "sr-only"})
+                                    @Html.TextBoxFor(m => m.EmailAddress, new {@class = "form-control form-control-sm focus", placeholder = Html.DisplayNameFor(m => m.EmailAddress)})
+                                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new {@class = "text-danger"})
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new {@class = "sr-only"})
+                                    @Html.PasswordFor(m => m.Password, new {@class = "form-control form-control-sm", placeholder = Html.DisplayNameFor(m => m.Password)})
+                                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                                </div>
+                                <input type="submit" value="@Resources.Account_Login_Submit_DisplayName" class="btn btn-primary btn-block"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p class="card-text">@Html.ActionLink(Resources.Account_Login_ForgotSignIn_Link, "PasswordReset", null, new {@class = "btn btn-secondary btn-block"})</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p class="card-text text-justify small">@Resources.Account_Login_Message</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

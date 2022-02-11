@@ -1,0 +1,234 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.LeaseDetailViewModel
+
+@{
+    ViewBag.Title = Resources.Lease_Detail_Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Lease_BreadCrumb, "Index", "Lease")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.Lease_Detail_BreadCrumb</li>
+    </ol>
+</nav>
+@if (User.IsInRole("WORKITEM_CRUD"))
+{
+    <div class="row mb-3">
+        <div class="col-lg">
+            @Html.ActionLink(Resources.Common_WorkItem_Create_Link, "CreateFromLease", "WorkItem", new {id = Model.CarLeaseId}, new {@class = "btn btn-secondary"})
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.WorkItem_Detail_CarLessee_Heading</h5>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-lg-4">@Resources.Common_Vin_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.Vin</dd>
+                    <dt class="col-lg-4">@Resources.Lease_Detail_LesseeFullName_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.LesseeFirstLastName</dd>
+                    <dt class="col-lg-4">@Resources.Lease_Detail_YearMakeModel_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.YearMakeModel</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.Lease_Common_Lease_Heading</h5>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-lg-4">@Resources.Common_LeaseNumber_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.LeaseNumber</dd>
+                    <dt class="col-lg-4">@Resources.Lease_Detail_CompanyCode_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.CompanyName</dd>
+                    <dt class="col-lg-4">@Resources.Lease_Detail_LeaseStatusName_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.LeaseStatusName</dd>
+                    <dt class="col-lg-4">@Resources.Lease_Detail_AssetStatusName_DisplayName</dt>
+                    <dd class="col-lg-8">@Model.AssetStatusName</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.Lease_Common_LeaseDates_Heading</h5>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-lg-6">@Resources.Lease_Detail_CommencementDate_DisplayName</dt>
+                    <dd class="col-lg-6">@($"{Model.CommencementDate:d}")</dd>
+                    <dt class="col-lg-6">@Resources.Lease_Detail_ScheduledTerminationDate_DisplayName</dt>
+                    <dd class="col-lg-6">@($"{Model.ScheduledTerminationDate:d}")</dd>
+                    @if (Model.ActualTerminationDate.HasValue)
+                    {
+                        <dt class="col-lg-6">@Resources.Lease_Detail_ActualTerminationDate_DisplayName</dt>
+                        <dd class="col-lg-6">@($"{Model.ActualTerminationDate.Value:d}")</dd>
+                    }
+                    @if (Model.SaleDate.HasValue)
+                    {
+                        <dt class="col-lg-6">@Resources.Lease_Detail_SaleDate_DisplayName</dt>
+                        <dd class="col-lg-6">@($"{Model.SaleDate.Value:d}")</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.LeaseAttachmentRecords.Any())
+{
+    <div class="row mb-3">
+        <div class="col-lg">
+            <div class="card">
+                <h5 class="card-header">@Resources.Common_Attachments_Heading</h5>
+                <div class="table-responsive">
+                    <table class="table table-condensed compact dataTable_custom mb-0">
+                        <thead>
+                        <tr>
+                            <th>@Resources.Lease_Detail_DocumentType_TableHeader</th>
+                            <th>@Resources.Lease_Detail_DocumentName_TableHeader</th>
+                            <th>@Resources.Lease_Detail_CreatedOn_TableHeader</th>
+                            <th>@Resources.Common_Actions_TableHeader</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var a in Model.LeaseAttachmentRecords)
+                        {
+                            <tr>
+                                <td>@a.LeaseAttachmentTypeName</td>
+                                <td>@a.AttachmentName</td>
+                                <td>@a.CreatedOnDateTime.ToString("M/d/yyyy h:mm:ss tt")</td>
+                                <td>@Html.ActionLink(Resources.Common_View_Link, "ViewAttachment", new {id = a.LeaseAttachmentId}, new {@class = "btn btn-secondary btn-sm"})</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="row mb-3">
+    <div class="col-lg">
+        <button class="btn  btn-secondary" type="button" data-toggle="collapse" data-target="#collapse_account_history" aria-expanded="false" aria-controls="collapse_account_history">
+            @Resources.Lease_Detail_AccountHistory_Heading
+        </button>
+        <button class="btn  btn-secondary" type="button" data-toggle="collapse" data-target="#collapse_customer_address" aria-expanded="false" aria-controls="collapse_customer_address">
+            @Resources.Lease_Detail_CustomerAddressHistory_Heading
+        </button>
+        <button class="btn  btn-secondary" type="button" data-toggle="collapse" data-target="#collapse_physical_address" aria-expanded="false" aria-controls="collapse_physical_address">
+            @Resources.Lease_Detail_PhysicalAddressHistory_Heading
+        </button>
+    </div>
+</div>
+<div class="collapse show" id="collapse_account_history">
+    <div class="row">
+        <div class="col-lg">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.Lease_Detail_AccountHistory_Heading</h5>
+                @if (Model.TaxBillCarLeaseRecords.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-condensed compact dataTable_custom mb-0">
+                            <thead>
+                            <tr>
+                                <th>@Resources.Lease_Detail_AcccountNumber_TableHeader</th>
+                                <th>@Resources.Lease_Detail_BillNumber_TableHeader</th>
+                                <th class="text-center">@Resources.Lease_Detail_TaxYear_TableHeader</th>
+                                <th class="text-right">@Resources.Lease_Detail_TotalAmount_TableHeader</th>
+                                <th class="text-center">@Resources.Lease_Detail_DueDate_TableHeader</th>
+                                <th class="text-center">@Resources.Lease_Detail_PaidDate_TableHeader</th>
+                                <th>@Resources.Lease_Detail_TaxCollector_TableHeader</th>
+                            </tr>
+                            </thead>
+                            @foreach (var r in Model.TaxBillCarLeaseRecords)
+                            {
+                                <tr>
+                                    <td>@r.AccountNumber</td>
+                                    <td>@Html.ActionLink(r.BillNumber, "Allocation", "TaxBill", new {id = r.TaxBillCarLeaseId}, null)</td>
+                                    <td class="text-center">@r.TaxYear</td>
+                                    <td class="text-right">@($"{r.TotalAmountOwed:C}")</td>
+                                    <td class="text-center">@(r.DueDate.HasValue ? r.DueDate.Value.ToString("MM/dd/yyyy") : "")</td>
+                                    <td class="text-center">@(r.PaidDate.HasValue ? r.PaidDate.Value.ToString("MM/dd/yyyy") : "")</td>
+                                    <td>@r.TaxCollector</td>
+
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-body">
+                        @Resources.Lease_Detail_AccountHistory_NoHistory_Message
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse" id="collapse_customer_address">
+    <div class="row">
+        <div class="col-lg">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.Lease_Detail_CustomerAddressHistory_Heading</h5>
+                <div class="table-responsive">
+                    <table class="table table-condensed compact dataTable_custom mb-0">
+                        <thead>
+                        <tr>
+                            <th>@Resources.Lease_Detail_Period_TableHeader</th>
+                            <th>@Resources.Lease_Detail_Address_TableHeader</th>
+                            <th>@Resources.Lease_Detail_CityStateZip_TableHeader</th>
+                        </tr>
+                        </thead>
+                        @foreach (var a in Model.CustomerAddressRecords)
+                        {
+                            <tr>
+                                <td>@a.EffectiveDateTime.ToString("MM/dd/yyyy") - @(a.EndDate.HasValue ? a.EndDate.Value.ToString("MM/dd/yyyy") : "Present")</td>
+                                <td>@a.StreetAddress</td>
+                                <td>@a.City, @a.State, @a.PostalCode</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse" id="collapse_physical_address">
+    <div class="row">
+        <div class="col-lg">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.Lease_Detail_PhysicalAddressHistory_Heading</h5>
+                <div class="table-responsive">
+                    <table class="table table-condensed compact dataTable_custom mb-0">
+                        <thead>
+                        <tr>
+                            <th>@Resources.Lease_Detail_Period_TableHeader</th>
+                            <th>@Resources.Lease_Detail_Address_TableHeader</th>
+                            <th>@Resources.Lease_Detail_CityStateZip_TableHeader</th>
+                            <th>@Resources.Lease_Detail_County_TableHeader</th>
+                        </tr>
+                        @foreach (var a in Model.PhysicalAddressRecords)
+                        {
+                            <tr>
+                                <td>@a.EffectiveDateTime.ToString("MM/dd/yyyy") - @(a.EndDate.HasValue ? a.EndDate.Value.ToString("MM/dd/yyyy") : "Present")</td>
+                                <td>@a.StreetAddress</td>
+                                <td>@a.City, @a.State, @a.PostalCode</td>
+                                <td>@a.County</td>
+                            </tr>
+                        }
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-lg">
+        @Html.ActionLink(Resources.Lease_Common_BackToList_Link, "Index", null, new {@class = "btn btn-primary"})
+    </div>
+</div>

@@ -1,0 +1,98 @@
+﻿@using CarLeasePPT.Utility
+@model CarLeasePPT.Models.AuditLogViewModel
+
+@{
+    ViewBag.Title = Resources.AuditLog_Detail_Title;
+    var headerBackgroundStyle = Model.Level.Equals("Warn") ? "bg-warning" : Model.Level.Equals("Error") ? "bg-danger text-white" : string.Empty;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_AuditLog_Link, "Index", "AuditLog")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.AuditLog_Detail_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-lg">
+        <div class="card mb-3">
+            <div class="card-body @Html.Raw(headerBackgroundStyle)">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <strong>Event Date:</strong> @Model.Logged.ToString("dddd, MMMM d, yyyy h:mm:ss tt")
+                    </div>
+                    <div class="col-lg-6">
+                        <strong>Event Level:</strong> @Model.Level
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.AuditLog_Detail_User_Heading</h5>
+            <div class="card-body">
+                <dl class="dl-postspace dl-form-mimic">
+                    <dt>@Resources.AuditLog_Detail_PersonFullName_DisplayNane</dt>
+                    @if (Model.PersonId.HasValue && User.IsInRole("USER_MANAGEMENT"))
+                    {
+                        <dd>@Html.ActionLink(Model.PersonFullName, "Detail", "User", new {id = Model.PersonId.Value}, null)</dd>
+                    }
+                    else
+                    {
+                        <dd>@Model.PersonFullName</dd>
+                    }
+                    <dt>@Resources.AuditLog_Detail_RemoteAddress_DisplayName</dt>
+                    <dd>@Model.RemoteAddress</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <h5 class="card-header">@Resources.AuditLog_Detail_Action_Heading</h5>
+            <div class="card-body">
+                <dl class="dl-postspace dl-form-mimic">
+                    <dt>@Resources.AuditLog_Detail_Message_DisplayName</dt>
+                    <dd>@Model.Message</dd>
+                    <dt>@Resources.AuditLog_Detail_Url_DisplayName</dt>
+                    <dd>@Model.Url</dd>
+                    <dt>@Resources.AuditLog_Detail_Controller_DisplayName</dt>
+                    <dd>@Model.Controller</dd>
+                    <dt>@Resources.AuditLog_Detail_Action_DisplayName</dt>
+                    <dd>@Model.Action</dd>
+                    @if (Model.RecordId.HasValue)
+                    {
+                        <dt>@Resources.AuditLog_Detail_RecordId_DisplayName</dt>
+                        <dd>@Model.RecordId.Value</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    </div>
+    @if (Model.IsReviewed && Model.ReviewedOnDateTime.HasValue)
+    {
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <h5 class="card-header">@Resources.AuditLog_Detail_Review_Heading</h5>
+                <div class="card-body">
+                    <dl class="dl-postspace dl-form-mimic">
+                        <dt>@Resources.AuditLog_Detail_ReviewedByPersonName_DisplayName</dt>
+                        <dd>@Model.ReviewedByPersonName</dd>
+                        <dt>@Resources.AuditLog_Detail_ReviewedOnDateTime_DisplayName</dt>
+                        <dd>@Model.ReviewedOnDateTime.Value.ToString("dddd, MMMM d, yyyy h:mm:ss tt")</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink(Resources.User_Common_BackToList_Link, "Index", null, new {@class = "btn btn-primary"})
+    @if (!Model.IsReviewed)
+    {
+        @Html.ActionLink(Resources.AuditLog_Detail_MarkReviewed_Link, "DetailMarkReviewed", new {id = Model.AuditLogId}, new {@class = "btn btn-secondary"})
+    }
+</p>

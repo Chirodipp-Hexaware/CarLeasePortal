@@ -1,0 +1,62 @@
+﻿@using CarLeasePPT.Helpers
+@using CarLeasePPT.Utility
+@{
+    ViewBag.Title = Resources.AuditLog_Index_Title;
+    var aftoken = AntiForgeryTokenHelper.TokenHeaderValue();
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink(Resources.Common_Dashboard_Link, "Index", "Home")</li>
+        <li class="breadcrumb-item active" aria-current="page">@Resources.AuditLog_BreadCrumb</li>
+    </ol>
+</nav>
+<div class="row mb-3">
+    <div class="col-lg">
+        @Html.ActionLink("Run Audit Log Report", "RunReport", "AuditLog", null, new {@class = "btn btn-primary"})
+        @Html.ActionLink(Resources.AuditLog_Index_MarkAllReviewed_Link, "MarkAllReviewed", "AuditLog", null, new {@class = "btn btn-secondary"})
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <div class="form-check">
+                <input id="show_info" class="form-check-input" name="show_info" type="checkbox" value="true" aria-controls="auditlog_table" aria-label="@Resources.AuditLog_Index_ShowInfo_DisplayName"/>
+                <label for="show_info" class="form-check-label">@Resources.AuditLog_Index_ShowInfo_DisplayName</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <div class="form-check">
+                <input id="show_reviewed" class="form-check-input" name="show_reviewed" type="checkbox" value="true" aria-controls="auditlog_table" aria-label="@Resources.AuditLog_Index_ShowReviewed_DisplayName"/>
+                <label for="show_reviewed" class="form-check-label">@Resources.AuditLog_Index_ShowReviewed_DisplayName</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered compact dataTable_custom" id="auditlog_table">
+                <thead>
+                <tr>
+                    <th>@Resources.AuditLog_Index_Logged_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_LogLevel_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_PersonFullName_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_Message_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_Controller_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_Action_TableHeader</th>
+                    <th>@Resources.AuditLog_Index_IsReviewed_TableHeader</th>
+                    <th>@Resources.Common_Actions_TableHeader</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="aft" data-token="@aftoken" aria-hidden="true" class="hidden"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/auditlog")
+}
